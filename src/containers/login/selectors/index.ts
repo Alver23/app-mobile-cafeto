@@ -8,3 +8,8 @@ export const selectToken = createSelector(
     selectLoginState,
     (state: LoginState) => state.token,
 );
+
+export const selectTokenLoading = createSelector(
+    selectLoginState,
+    (state: LoginState) => state.tokenLoading,
+);

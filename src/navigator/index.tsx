@@ -1,11 +1,11 @@
-import * as React from 'react';
+import  React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Containers
-import { HomeScreen } from './../containers/home';
-import { LoginContainer } from "../containers/login/login";
+import HomeContainer from './../containers/home';
+import LoginContainer from "../containers/login/login";
 
 
 const Dashboard = createStackNavigator();
@@ -22,7 +22,7 @@ function DetailsScreen() {
 export const DashboardNavigator = () => (
     <NavigationContainer>
         <Dashboard.Navigator>
-            <Dashboard.Screen name="Home" component={HomeScreen} />
+            <Dashboard.Screen name="Home" component={HomeContainer} />
             <Dashboard.Screen name="Details" component={DetailsScreen} />
         </Dashboard.Navigator>
     </NavigationContainer>

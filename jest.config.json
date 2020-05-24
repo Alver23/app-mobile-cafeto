@@ -1,0 +1,16 @@
+{
+  "preset": "react-native",
+  "roots": ["<rootDir>/src/"],
+  "testMatch": ["**/+(*.)+(spec).+(ts)"],
+  "collectCoverage": true,
+  "collectCoverageFrom": ["**/*ts", "!**/*-mock.ts"],
+  "coverageDirectory": "coverage",
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
+  ]
+}
