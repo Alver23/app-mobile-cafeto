@@ -35,6 +35,8 @@
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/runtime": "^7.6.2",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/eslint-config": "^1.0.0",
     "@types/axios": "^0.14.0",
     "@types/jest": "^24.0.24",
@@ -44,12 +46,30 @@
     "@typescript-eslint/parser": "^2.27.0",
     "babel-jest": "^24.9.0",
     "eslint": "^6.5.1",
+    "husky": "^4.2.5",
     "jest": "^24.9.0",
+    "lint-staged": "^10.2.6",
     "metro-react-native-babel-preset": "^0.58.0",
     "prettier": "^2.0.4",
     "react-devtools": "^4.7.0",
     "react-test-renderer": "16.11.0",
+    "standard-version": "^8.0.0",
     "typescript": "^3.8.3"
   },
-  "jest": {}
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,json}": [
+      "prettier --write --config .prettierrc.js"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
 }
