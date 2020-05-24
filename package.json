@@ -9,7 +9,8 @@
     "test": "jest --config jest.config.json",
     "test:watch": "DEBUG=test:* npm test -- --verbose --watch",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "react-devtools": "react-devtools"
+    "react-devtools": "react-devtools",
+    "release": "standard-version -a"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.10.3",
