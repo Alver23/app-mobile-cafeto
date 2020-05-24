@@ -31,3 +31,13 @@ export const buttonDisabledStyle = {
         },
     }),
 }
+
+export const buttonVariants = {
+    primary: buttonPrimaryStyle,
+    disabled: buttonDisabledStyle,
+}
+
+export enum BUTTON_VARIANT_TYPES {
+    primary = 'primary',
+    disabled = 'disabled',
+}

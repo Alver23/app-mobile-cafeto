@@ -1,20 +1,20 @@
 // Dependencies
-import React, { Component } from 'react';
-import { connect, ConnectedProps } from 'react-redux';
-import { View, Text, Button, TextInput, ScrollView } from 'react-native';
-
-import { textInputPrimaryStyle, textInputDangerStyle, buttonPrimaryStyle, validationsStyle, buttonDisabledStyle } from "../../utils/theme";
-import { validateEmail } from "../../utils/validations/validations";
-
+import React, {Component} from 'react';
+import {connect, ConnectedProps} from 'react-redux';
+import {ScrollView, View} from 'react-native';
+// Theme
+import {BUTTON_VARIANT_TYPES} from "../../utils/theme";
+import {email as emailValidation, getMessage, VALIDATION_MESSAGE_TYPES} from "../../utils/validations";
 // Redux
-import { login } from "../../store/actions/login";
-import { selectLoginLoading, selectLoginError } from "../../store/selectors/login";
-
+import {login} from "../../store/actions/login";
+import {selectLoginError, selectLoginLoading} from "../../store/selectors/login";
 // Components
-import { LoadingIndicatorComponent } from "../../components";
-
+import {EmailInput, PasswordInput} from "./components";
+import {ButtonComponent, LoadingIndicatorComponent, TextError} from "../../components";
 // Models
-import { State, Props} from "./login-interface";
+import {Props, State} from "./login-interface";
+// Styles
+import styles from './style';
 
 const mapStateToProps = state => ({
     loading: selectLoginLoading(state),
@@ -30,9 +30,6 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 type PropsType = PropsFromRedux & Props;
-
-// Styles
-import styles from './style';
 
 
 class LoginContainer extends Component<PropsType, State> {
@@ -50,27 +47,23 @@ class LoginContainer extends Component<PropsType, State> {
     }
 
     onChangeEmail = (value: string) => {
-        const error = !validateEmail(value) ? 'You have entered an invalid email address!' : null;
+        const error = !emailValidation(value) ? getMessage(VALIDATION_MESSAGE_TYPES.email)() : null;
         let genericError = this.state.genericError;
         !error && (genericError = null);
         this.setState({email: { value, error }, genericError});
     }
 
     onChangePassword = (value: string) => {
-        const error = !value ? 'The password is required' : null;
+        const error = !value ? getMessage(VALIDATION_MESSAGE_TYPES.required)('password') : null;
         this.setState({password: { value, error }});
     }
-
-    showError = (message: string) => (
-        message && (<Text style={validationsStyle.error}>{message}</Text>)
-    )
 
     onSubmit = _ => {
         const { email: {value: emailValue }, password: {value: passwordValue} } = this.state;
         if (emailValue && passwordValue) {
             this.props.login({email: emailValue, password: passwordValue});
         } else {
-            this.setState({genericError: 'The email or password are required'});
+            this.setState({genericError: getMessage(VALIDATION_MESSAGE_TYPES.twoRequired)('email', 'password')});
         }
     }
 
@@ -78,38 +71,29 @@ class LoginContainer extends Component<PropsType, State> {
         const { error, loading } = this.props;
         const { email: {error: emailError}, password: {error: passwordError}, genericError } = this.state;
         return !loading ? (
-            <ScrollView style={{padding: 20}}>
-                <View style={{flex: 1, justifyContent: 'center'}}>
-                    <View style={styles.container}>
-                        <Text>Email</Text>
-                        <TextInput
-                            autoCapitalize='none'
-                            textContentType='emailAddress'
-                            style={emailError ? textInputDangerStyle : textInputPrimaryStyle}
-                            onChangeText={value => this.onChangeEmail(value)} />
-                        {this.showError(emailError)}
-                    </View>
-                    <View style={styles.container}>
-                        <Text>Password</Text>
-                        <TextInput
-                            textContentType='password'
-                            style={passwordError ? textInputDangerStyle : textInputPrimaryStyle}
-                            secureTextEntry={true}
-                            onChangeText={value => this.onChangePassword(value)} />
-                        {this.showError(passwordError)}
-                    </View>
-                    <View style={styles.container}>
-                        {this.showError(genericError || (error ? `The user not ${error}` : null ))}
-                    </View>
-                    <View style={(passwordError || emailError) ? buttonDisabledStyle: buttonPrimaryStyle}>
-                        <Button
-                            color="#ffffff"
-                            onPress={this.onSubmit}
-                            title="Submit"
-                            disabled={(passwordError || emailError) ? true: false}
-                        />
-                    </View>
+            <ScrollView style={styles.scrollViewContainer}>
+                <View style={styles.container}>
+                    <EmailInput
+                        error={emailError}
+                        onChangeValue={this.onChangeEmail}
+                    />
                 </View>
+                <View style={styles.container}>
+                    <PasswordInput
+                        error={passwordError}
+                        onChangeValue={this.onChangePassword}
+                    />
+                </View>
+                <View style={styles.container}>
+                    <TextError message={genericError || (error ? `The user not ${error}` : null)} />
+                </View>
+                <ButtonComponent
+                    color="#ffffff"
+                    title="Submit"
+                    variant={BUTTON_VARIANT_TYPES.primary}
+                    onClick={this.onSubmit}
+                    isDisabled={(passwordError || emailError) ? true : false}
+                />
             </ScrollView>
         ) : (
             <LoadingIndicatorComponent/>

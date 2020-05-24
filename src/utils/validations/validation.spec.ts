@@ -1,12 +1,12 @@
-import { validateEmail, minLength } from "./validations";
+import { email, minLength } from "./validations";
 
 describe('Validations', () => {
     describe('validateEmail', () => {
         it('should return true when email is valid', () => {
-            expect(validateEmail('dede@dede.com')).toBeTruthy();
+            expect(email('dede@dede.com')).toBeTruthy();
         });
         it('should return false when email is invalid', () => {
-            expect(validateEmail('dededede.com')).toBeFalsy();
+            expect(email('dededede.com')).toBeFalsy();
         });
     });
 
