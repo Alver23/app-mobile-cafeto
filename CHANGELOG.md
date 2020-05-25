@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/Alver23/app-mobile-cafeto/compare/v0.1.0...v0.1.1) (2020-05-25)
+
+
+### Features
+
+* add event container and redux ([20b79d8](https://github.com/Alver23/app-mobile-cafeto/commit/20b79d8fdb2d614ec34b3074f020f6911b000f93))
+* add event detail module ([88bbd5c](https://github.com/Alver23/app-mobile-cafeto/commit/88bbd5c2f2aaff885b4492fcfbce6ece40812261))
+
+
+### Bug Fixes
+
+* fixed eslint ([da7d5f3](https://github.com/Alver23/app-mobile-cafeto/commit/da7d5f39b5e4e7e6c626ba9fcc38846c9fa4ab8b))
+
 ## [0.1.0](https://github.com/Alver23/app-mobile-cafeto/compare/v0.0.3...v0.1.0) (2020-05-24)
 
 ### [0.0.3](https://github.com/Alver23/app-mobile-cafeto/compare/v0.0.2...v0.0.3) (2020-05-24)
