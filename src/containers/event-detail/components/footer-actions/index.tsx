@@ -11,7 +11,7 @@ import { Props } from './interface';
 import {
 	BUTTON_SIZE_TYPES,
 	BUTTON_VARIANT_TYPES,
-} from '../../../../utils/theme';
+} from '../../../../core/theme';
 
 const component: FC<Props> = ({ clickEdit, clickRemove }) => (
 	<Footer>

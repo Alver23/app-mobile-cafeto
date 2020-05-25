@@ -8,7 +8,7 @@ import { TextError } from '../../../../components';
 import {
 	textInputPrimaryStyle,
 	textInputDangerStyle,
-} from '../../../../utils/theme';
+} from '../../../../core/theme';
 
 export default ({ error, onChangeValue }) => {
 	return (

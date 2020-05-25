@@ -16,7 +16,7 @@ import styles from './../../styles';
 import {
 	BUTTON_SIZE_TYPES,
 	BUTTON_VARIANT_TYPES,
-} from '../../../../utils/theme';
+} from '../../../../core/theme';
 
 const component: FC<CardItem> = ({ id, title, address, onSelectedOption }) => {
 	return (

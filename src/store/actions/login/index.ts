@@ -10,11 +10,11 @@ import {
 } from './interfaces';
 
 // Utils
-import { externalAxiosInstance } from '../../../utils/axios-instance/axios-instance';
+import { externalAxiosInstance } from '../../../core/axios-instance/axios-instance';
 import {
 	clearAuthenticationToken,
 	setAuthenticationToken,
-} from '../../../utils/authentication';
+} from '../../../core/authentication';
 
 // Actions
 import { clearToken, saveToken, tokenLoading } from '../authentication-token';

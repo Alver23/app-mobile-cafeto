@@ -1,5 +1,5 @@
 // Utils
-import { internalAxiosInstance } from '../../../utils/axios-instance/axios-instance';
+import { internalAxiosInstance } from '../../../core/axios-instance/axios-instance';
 
 import { config } from '../../../config';
 const {

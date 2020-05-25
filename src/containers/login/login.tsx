@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { ScrollView, View } from 'react-native';
 // Theme
-import { BUTTON_VARIANT_TYPES } from '../../utils/theme';
+import { BUTTON_VARIANT_TYPES } from '../../core/theme';
 import {
 	email as emailValidation,
 	getMessage,
 	VALIDATION_MESSAGE_TYPES,
-} from '../../utils/validations';
+} from '../../core/validations';
 // Redux
 import { login } from '../../store/actions/login';
 import {
