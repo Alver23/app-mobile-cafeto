@@ -1,4 +1,4 @@
 export interface Props {
-  clickEdit: any;
-  clickRemove: any;
+	clickEdit: any;
+	clickRemove: any;
 }

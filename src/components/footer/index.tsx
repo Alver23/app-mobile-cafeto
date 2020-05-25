@@ -1,22 +1,19 @@
 // Dependencies
-import React, { FC } from "react";
-import { View } from "react-native";
+import React, { FC } from 'react';
+import { View } from 'react-native';
 
 // Models
-import { Props } from "./interface";
+import { Props } from './interface';
 
 // Styles
-import styles from './styles'
+import styles from './styles';
 
-const component: FC<Props> = ({ children}) => {
-    return (
-        <View style={styles.container}>
-            <View style={styles.contentChildren}>
-                {children}
-            </View>
-        </View>
-    )
-}
-
+const component: FC<Props> = ({ children }) => {
+	return (
+		<View style={styles.container}>
+			<View style={styles.contentChildren}>{children}</View>
+		</View>
+	);
+};
 
 export default component;
