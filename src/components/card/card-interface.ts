@@ -18,9 +18,8 @@ export interface CardFooter {
 
 export interface Item {
   id: number;
-  imageUrl?: string;
   title: string;
-  description?: string;
+  address: string;
 }
 
 export interface CardList {

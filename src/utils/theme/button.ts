@@ -4,7 +4,6 @@ import { colors } from './colors';
 const { ios: iosTheme, android: androidTheme } = colors;
 
 const defaultStyles = {
-  flex: 1,
   padding: 8,
   borderRadius: 20,
   alignItems: 'center',

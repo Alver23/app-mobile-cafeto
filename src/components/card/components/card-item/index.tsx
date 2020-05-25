@@ -1,11 +1,12 @@
 // Dependencies
 import React, {FC} from "react";
-import {View, Text, Image, TouchableOpacity} from "react-native";
+import { View, Text } from "react-native";
 
 // Components
 import Button from './../../../button';
 import Card from "../../card-container";
 import CardFooter from './../card-footer';
+import CardHeader from './../card-body'
 
 // Models
 import { CardItem } from "../../card-interface";
@@ -14,22 +15,15 @@ import { CardItem } from "../../card-interface";
 import styles from './../../styles';
 import { BUTTON_SIZE_TYPES, BUTTON_VARIANT_TYPES } from "../../../../utils/theme";
 
-const component: FC<CardItem> = ({ id, title, description, imageUrl, onSelectedOption}) => {
-    const renderImage = (value: string) => {
-        return value ? (<Image source={{uri: value}} style={styles.cardItemImage} />) : null;
-    }
-    const renderText = (value: string) => {
-        return value ? (<Text>{value}</Text>) : null;
-    }
+const component: FC<CardItem> = ({ id, title, address, onSelectedOption}) => {
     return (
         <Card>
-            <View style={styles.cardItemContainer}>
-                {renderImage(imageUrl)}
-                <View style={styles.cardItem}>
-                    {renderText(title)}
-                    {renderText(description)}
+            <CardHeader>
+                <Text>{title}</Text>
+                <View style={styles.cardItemContainer}>
+                    { !!address && (<Text><Text style={styles.cardItemBold}>Address:</Text> {address}</Text>)}
                 </View>
-            </View>
+            </CardHeader>
             <CardFooter>
                 <Button title="View more" variant={BUTTON_VARIANT_TYPES.primary} size={BUTTON_SIZE_TYPES.small} onClick={() => onSelectedOption && onSelectedOption({ id })}/>
             </CardFooter>

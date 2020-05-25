@@ -38,5 +38,8 @@ export const getEvents = () => (dispatch) => {
       const { data } = response;
       dispatch(loadEventSuccess(data));
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      dispatch(loadEventFailure(error));
+      dispatch(eventLoading(false));
+    });
 };

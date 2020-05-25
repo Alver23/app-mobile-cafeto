@@ -1,17 +1,18 @@
 // Dependencies
 import React, {Component } from "react";
 import {connect, ConnectedProps} from 'react-redux';
-import {Button, SafeAreaView} from "react-native";
+import {SafeAreaView, View} from "react-native";
 
 // Components
-import {CardList} from './../../components/card';
-import { LoadingIndicator } from "../../components";
+import { LoadingIndicator, Button, CardList } from "../../components";
 
 // Models
 import {Props} from "./event-interface";
 
 // Styles
 import styles from './styles';
+
+import {BUTTON_VARIANT_TYPES} from "../../utils/theme";
 
 // Redux
 import { getEvents } from "./actions";
@@ -54,7 +55,8 @@ class EventsContainer extends Component<PropsType, any> {
                 <CardList items={events || []} onSelectedOption={this.onSelectedEvent.bind(this)} />
                 <Button
                     title="Logout"
-                    onPress={() => this.props.logout()}
+                    variant={BUTTON_VARIANT_TYPES.primary}
+                    onClick={() => this.props.logout()}
                 />
             </SafeAreaView>
         );

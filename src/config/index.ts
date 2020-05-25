@@ -12,4 +12,5 @@ export const config = {
     },
   },
   defaultTimeout: Config.TIMEOUT,
+  mapBoxToken: Config.MAP_BOX_TOKEN,
 };

@@ -25,7 +25,7 @@ export const eventReducer = (
     case EVENTS_ACTION_TYPES.loadEventsSuccess:
       return { ...state, data: action.payload, loading: false, error: null };
     case EVENTS_ACTION_TYPES.loadEventsFailure:
-      return { ...state, error: action.payload, loading: false };
+      return { ...state, error: action.payload };
     default:
       return state;
   }

@@ -32,27 +32,11 @@ export default StyleSheet.create({
     paddingBottom: 12,
   },
   cardItemContainer: {
-    ...defaultStyles,
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
-  cardItemImage: {
-    width: 56,
-    height: 56,
-  },
-  cardItem: {
-    padding: 12,
-    justifyContent: 'center',
-  },
-  cardItemButton: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
-  },
-  cardItemButtonContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 10,
+  cardItemBold: {
+    fontWeight: 'bold',
   },
 });

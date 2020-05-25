@@ -1,16 +1,90 @@
 // Dependencies
 import React, {Component} from "react";
-import { View, Text} from 'react-native';
+import {connect, ConnectedProps} from 'react-redux';
+import { View, Text, Image, SafeAreaView, ScrollView } from 'react-native';
 
-class EventDetailContainer extends Component<any> {
+// Components
+import { FooterActions } from "./components";
+import { Card, CardHeader, CardBody, Map } from "../../components";
+
+// Models
+import { Props } from "./event-detail-interface";
+
+// Styles
+import styles from "./styles";
+
+// Redux
+import { selectEventById } from "../events/selectors";
+
+const mapStateToProps = (state, props) => ({
+    event: selectEventById(state, props),
+});
+
+const mapDispatchToProps = dispatch => ({});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type PropsType = PropsFromRedux & Props;
+
+class EventDetailContainer extends Component<Props, any> {
+    constructor(props) {
+        super(props);
+    }
+
+    getShapeData() {
+        const { event }  = this.props;
+        const { id, title, description, latitude, longitude } = event;
+        return {
+            type: 'FeatureCollection',
+            features: [
+                {
+                    id,
+                    title,
+                    description,
+                    type: 'Feature',
+                    properties: {
+                        icon: 'iconMap',
+                    },
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [longitude, latitude],
+                    },
+                },
+            ],
+        }
+    }
     render() {
-        console.log(this.props.route)
+        const { event }  = this.props;
+        const { title, description, imageUrl, isOwner, latitude, longitude } = event;
         return (
-            <View>
-                <Text>Event Detail</Text>
-            </View>
-        );
+            <SafeAreaView style={styles.container}>
+                <ScrollView style={styles.scrollContainer}>
+                    <View style={styles.container}>
+                        <Card>
+                            <CardHeader>
+                                <Text>{title}</Text>
+                            </CardHeader>
+                            <CardBody>
+                                { !!description && (<Text>{description}</Text>)}
+                                { !!imageUrl && (
+                                    <View style={{alignItems: 'center'}}>
+                                        <Image style={{width: 120, height: 120}} source={{uri: imageUrl}} />
+                                    </View>
+                                )}
+                            </CardBody>
+                        </Card>
+                    </View>
+                    <Map
+                        mapId={"eventDetail"}
+                        data={this.getShapeData()}
+                        centerCoordinate={[longitude, latitude]}
+                    />
+                </ScrollView>
+                { isOwner ? (<FooterActions clickEdit={() => console.log('edit event')} clickRemove={() => console.log('remove event')} />): null}
+            </SafeAreaView>
+        )
     }
 }
-
-export default EventDetailContainer;
+export default connector(EventDetailContainer);

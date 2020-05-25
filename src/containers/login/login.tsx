@@ -10,7 +10,7 @@ import {login} from "../../store/actions/login";
 import {selectLoginError, selectLoginLoading} from "../../store/selectors/login";
 // Components
 import {EmailInput, PasswordInput} from "./components";
-import {ButtonComponent, LoadingIndicator, TextError} from "../../components";
+import {Button, LoadingIndicator, TextError} from "../../components";
 // Models
 import {Props, State} from "./login-interface";
 // Styles
@@ -87,8 +87,7 @@ class LoginContainer extends Component<PropsType, State> {
                 <View style={styles.container}>
                     <TextError message={genericError || (error ? `The user not ${error}` : null)} />
                 </View>
-                <ButtonComponent
-                    color="#ffffff"
+                <Button
                     title="Login"
                     variant={BUTTON_VARIANT_TYPES.primary}
                     onClick={this.onSubmit}
