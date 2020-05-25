@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { View, Text, Button } from 'react-native';
 
 // Containers
-
-import EventsContainer from './../events';
 import { logoutRequest } from "../../store/actions/login";
+
+// Styles
+import Styles from './styles';
 
 import { Props } from "./home-interface";
 
@@ -19,13 +20,7 @@ class HomeContainer extends Component<Props, any> {
     }
     render() {
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Home Screen</Text>
-                <EventsContainer />
-                <Button
-                    title="Go to Details"
-                    onPress={() => this.props.navigation.navigate('Details')}
-                />
+            <View style={Styles.container}>
                 <Button
                     title="Logout"
                     onPress={() => this.onLogout()}

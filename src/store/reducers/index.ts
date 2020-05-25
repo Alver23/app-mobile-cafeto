@@ -1,11 +1,19 @@
 // Dependencies
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
 // Reducers
-import { loginReducer, loginFeatureKey } from "./login";
-import { authenticationTokenReducer, authenticationTokenFeatureKey } from './authentication-token';
+import { loginReducer, loginFeatureKey } from './login';
+import {
+  eventReducer,
+  eventFeatureKey,
+} from '../../containers/events/reducers';
+import {
+  authenticationTokenReducer,
+  authenticationTokenFeatureKey,
+} from './authentication-token';
 
 export default combineReducers({
-    [loginFeatureKey]: loginReducer,
-    [authenticationTokenFeatureKey]: authenticationTokenReducer,
+  [loginFeatureKey]: loginReducer,
+  [eventFeatureKey]: eventReducer,
+  [authenticationTokenFeatureKey]: authenticationTokenReducer,
 });

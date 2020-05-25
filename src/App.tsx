@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
 // Components
-import { LoadingIndicatorComponent } from "./components";
+import { LoadingIndicator } from "./components";
 
 // Navigator
 import { DashboardNavigator, AuthNavigator } from "./navigator";
@@ -45,7 +45,7 @@ class App extends Component<PropsType, State> {
 
     render() {
         const { authenticationToken, authenticationLoading } = this.props;
-        return authenticationLoading ? (<LoadingIndicatorComponent />) : (authenticationToken ? <DashboardNavigator /> : <AuthNavigator />)
+        return authenticationLoading ? (<LoadingIndicator />) : (authenticationToken ? <DashboardNavigator /> : <AuthNavigator />)
     }
 }
 

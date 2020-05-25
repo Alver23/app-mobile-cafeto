@@ -1,27 +1,25 @@
+// Components
 import React, { FC } from "react";
-import { Button, View } from "react-native";
+import {Text, TouchableOpacity} from "react-native";
 
 // Theme
-import { buttonVariants, BUTTON_VARIANT_TYPES } from "../../utils/theme";
+import {buttonVariants, buttonSizes, BUTTON_VARIANT_TYPES, BUTTON_SIZE_TYPES} from "../../utils/theme";
 
 interface Props {
     title: string;
-    isDisabled: boolean;
-    color: string;
+    isDisabled?: boolean;
+    size?: BUTTON_SIZE_TYPES;
     variant: BUTTON_VARIANT_TYPES;
-    onClick: any;
+    onClick?: any;
 }
-export const component: FC<Props> = ({ title, isDisabled, color, variant, onClick }) => {
-    const { disabled } = buttonVariants;
+
+const component: FC<Props> = ({ title, isDisabled, size, variant, onClick }) => {
+    const btnSize = buttonSizes[size] || buttonSizes.large;
+    const btnStyle = isDisabled ? buttonVariants.disabled : buttonVariants[variant];
     return (
-        <View style={isDisabled ? disabled : buttonVariants[variant] }>
-            <Button
-                disabled={isDisabled}
-                title={title}
-                color={color}
-                onPress={onClick}
-            />
-        </View>
+        <TouchableOpacity style={[btnStyle as any, btnSize]} activeOpacity={0.8} onPress={() => !isDisabled && onClick && onClick()}>
+            <Text style={{color: btnStyle.color}}>{title}</Text>
+        </TouchableOpacity>
     )
 }
 
