@@ -10,7 +10,7 @@ import {login} from "../../store/actions/login";
 import {selectLoginError, selectLoginLoading} from "../../store/selectors/login";
 // Components
 import {EmailInput, PasswordInput} from "./components";
-import {ButtonComponent, LoadingIndicatorComponent, TextError} from "../../components";
+import {ButtonComponent, LoadingIndicator, TextError} from "../../components";
 // Models
 import {Props, State} from "./login-interface";
 // Styles
@@ -89,14 +89,14 @@ class LoginContainer extends Component<PropsType, State> {
                 </View>
                 <ButtonComponent
                     color="#ffffff"
-                    title="Submit"
+                    title="Login"
                     variant={BUTTON_VARIANT_TYPES.primary}
                     onClick={this.onSubmit}
                     isDisabled={(passwordError || emailError) ? true : false}
                 />
             </ScrollView>
         ) : (
-            <LoadingIndicatorComponent/>
+            <LoadingIndicator/>
         );
     }
 }
