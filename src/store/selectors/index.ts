@@ -1,1 +1,5 @@
-export { getAuthenticationToken, getAuthenticationError, getAuthenticationLoading } from './authentication-token'
+export {
+	getAuthenticationToken,
+	getAuthenticationError,
+	getAuthenticationLoading,
+} from './authentication-token';

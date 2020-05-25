@@ -1,10 +1,10 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-    scrollViewContainer: {
-        padding: 20,
-    },
-    container: {
-        margin: 8,
-    },
+	scrollViewContainer: {
+		padding: 20,
+	},
+	container: {
+		margin: 8,
+	},
 });

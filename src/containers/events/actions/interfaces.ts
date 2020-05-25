@@ -1,27 +1,27 @@
 import { ApiResponseEvent } from '../event-interface';
 
 export enum EVENTS_ACTION_TYPES {
-  eventLoading = '[EVENTS] Loading',
-  loadEventsSuccess = '[EVENTS] Load events success',
-  loadEventsFailure = '[EVENST] Load events failure',
+	eventLoading = '[EVENTS] Loading',
+	loadEventsSuccess = '[EVENTS] Load events success',
+	loadEventsFailure = '[EVENST] Load events failure',
 }
 
 export interface EventLoading {
-  payload: boolean;
-  type: EVENTS_ACTION_TYPES.eventLoading;
+	payload: boolean;
+	type: EVENTS_ACTION_TYPES.eventLoading;
 }
 
 export interface LoadEventSuccess {
-  payload: ApiResponseEvent[];
-  type: EVENTS_ACTION_TYPES.loadEventsSuccess;
+	payload: ApiResponseEvent[];
+	type: EVENTS_ACTION_TYPES.loadEventsSuccess;
 }
 
 export interface LoadEventFailure {
-  payload: Error;
-  type: EVENTS_ACTION_TYPES.loadEventsFailure;
+	payload: Error;
+	type: EVENTS_ACTION_TYPES.loadEventsFailure;
 }
 
 export type EventActionTypes =
-  | EventLoading
-  | LoadEventSuccess
-  | LoadEventFailure;
+	| EventLoading
+	| LoadEventSuccess
+	| LoadEventFailure;
