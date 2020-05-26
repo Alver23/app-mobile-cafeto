@@ -1,7 +1,3 @@
-import Config from 'react-native-config';
-
-console.log('Config', Config);
-
 export const config = {
 	api: {
 		basePath: 'http://localhost:3000/cafeto/api',
