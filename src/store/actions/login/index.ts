@@ -1,6 +1,3 @@
-// Dependencies
-import { AxiosError } from 'axios';
-
 // Models
 import {
 	LOGIN_ACTION_TYPES,
@@ -9,26 +6,27 @@ import {
 	User,
 } from './interfaces';
 
+// Service
+import { externalAxiosInstance } from '../../../core/axios-instance/axios-instance';
+
 // Utils
-import { externalAxiosInstance } from '../../../utils/axios-instance/axios-instance';
 import {
 	clearAuthenticationToken,
 	setAuthenticationToken,
-} from '../../../utils/authentication';
+} from '../../../core/authetication/authentication';
 
 // Actions
 import { clearToken, saveToken, tokenLoading } from '../authentication-token';
 
 // Configurations
-import { config } from '../../../config';
-const {
-	api: {
-		basePath,
-		auth: { login: loginUrl },
-	},
-} = config;
+import { configService } from '../../../config';
 
-export const loginLoading = (): LoginActionTypes => ({
+const {
+	basePath,
+	auth: { login: loginUrl },
+} = configService.get('api');
+export const loginLoading = (payload: boolean = true): LoginActionTypes => ({
+	payload,
 	type: LOGIN_ACTION_TYPES.loginRequest,
 });
 
@@ -65,14 +63,20 @@ export const login = (payload: { email: string; password: string }) => (
 			const { user, token } = response.data;
 			await setAuthenticationToken(token);
 			dispatch(loginSuccess({ user, token }));
+			dispatch(loginLoading(false));
 			dispatch(saveToken(token));
 		})
-		.catch((error: AxiosError) => {
-			const { response } = error;
-			const { message } = response.data;
-			dispatch(loginFailure(message));
-			dispatch(tokenLoading(false));
-		});
+		.catch(
+			({
+				response: {
+					data: { message },
+				},
+			}) => {
+				dispatch(loginFailure(message));
+				dispatch(loginLoading(false));
+				dispatch(tokenLoading(false));
+			},
+		);
 };
 
 export const logoutRequest = () => (dispatch) => {
@@ -81,6 +85,17 @@ export const logoutRequest = () => (dispatch) => {
 		.then((_) => {
 			dispatch(logout());
 			dispatch(clearToken());
+			dispatch(loginLoading(false));
 		})
-		.catch((error: AxiosError) => dispatch(loginFailure(error)));
+		.catch(
+			({
+				response: {
+					data: { message },
+				},
+			}) => {
+				dispatch(loginFailure(message));
+			},
+		);
 };
+
+export { loginProvider } from './auth0';

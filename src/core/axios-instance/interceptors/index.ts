@@ -1,5 +1,5 @@
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { getAuthenticationToken } from '../../authentication';
+import { getAuthenticationToken } from '../../authetication/authentication';
 
 export const headerAsBearerTokenInterceptor = () => async (
 	requestConfig: AxiosRequestConfig,

@@ -1,27 +1,28 @@
 // Dependencies
 import React, { Component } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { ScrollView, View } from 'react-native';
-// Theme
-import { BUTTON_VARIANT_TYPES } from '../../utils/theme';
+import { SafeAreaView } from 'react-native';
+
 import {
 	email as emailValidation,
 	getMessage,
 	VALIDATION_MESSAGE_TYPES,
-} from '../../utils/validations';
+} from '../../core/validations';
 // Redux
-import { login } from '../../store/actions/login';
+import { login, loginProvider } from '../../store/actions/login';
 import {
 	selectLoginError,
 	selectLoginLoading,
 } from '../../store/selectors/login';
 // Components
-import { EmailInput, PasswordInput } from './components';
-import { Button, LoadingIndicator, TextError } from '../../components';
+import { LoginView } from './components';
+import { LoadingIndicator } from '../../components';
 // Models
 import { Props, State } from './login-interface';
 // Styles
 import styles from './style';
+
+import { LoginContext } from './login-context';
 
 const mapStateToProps = (state) => ({
 	loading: selectLoginLoading(state),
@@ -30,6 +31,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	login: (payload) => dispatch(login(payload)),
+	loginProvider: () => dispatch(loginProvider()),
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -67,7 +69,7 @@ class LoginContainer extends Component<PropsType, State> {
 		this.setState({ password: { value, error } });
 	};
 
-	onSubmit = (_) => {
+	onSubmit = () => {
 		const {
 			email: { value: emailValue },
 			password: { value: passwordValue },
@@ -86,36 +88,25 @@ class LoginContainer extends Component<PropsType, State> {
 
 	render() {
 		const { error, loading } = this.props;
-		const {
-			email: { error: emailError },
-			password: { error: passwordError },
-			genericError,
-		} = this.state;
-		return !loading ? (
-			<ScrollView style={styles.scrollViewContainer}>
-				<View style={styles.container}>
-					<EmailInput error={emailError} onChangeValue={this.onChangeEmail} />
-				</View>
-				<View style={styles.container}>
-					<PasswordInput
-						error={passwordError}
-						onChangeValue={this.onChangePassword}
-					/>
-				</View>
-				<View style={styles.container}>
-					<TextError
-						message={genericError || (error ? `The user not ${error}` : null)}
-					/>
-				</View>
-				<Button
-					title="Login"
-					variant={BUTTON_VARIANT_TYPES.primary}
-					onClick={this.onSubmit}
-					isDisabled={passwordError || emailError ? true : false}
-				/>
-			</ScrollView>
-		) : (
+		const { email, password, genericError } = this.state;
+		return loading ? (
 			<LoadingIndicator />
+		) : (
+			<SafeAreaView style={styles.mainContainer}>
+				<LoginContext.Provider
+					value={{
+						email,
+						password,
+						genericError,
+						requestError: error,
+						onSubmitForm: this.onSubmit.bind(this),
+						onChangeEmail: this.onChangeEmail.bind(this),
+						onSubmitFormAuth0: this.props.loginProvider.bind(this),
+						onChangePassword: this.onChangePassword.bind(this),
+					}}>
+					<LoginView />
+				</LoginContext.Provider>
+			</SafeAreaView>
 		);
 	}
 }

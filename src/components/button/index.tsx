@@ -8,7 +8,7 @@ import {
 	buttonSizes,
 	BUTTON_VARIANT_TYPES,
 	BUTTON_SIZE_TYPES,
-} from '../../utils/theme';
+} from '../../core/theme';
 
 interface Props {
 	title: string;

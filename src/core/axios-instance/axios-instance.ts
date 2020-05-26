@@ -5,7 +5,7 @@ import {
 	responseInterceptor,
 } from './interceptors';
 
-import { config } from '../../config';
+import { configService } from '../../config';
 
 export class InternalAxiosInstanceFactory {
 	private readonly http: AxiosInstance;
@@ -34,7 +34,7 @@ export class ExternalAxiosInstanceFactory {
 	}
 }
 
-const { defaultTimeout } = config;
+const defaultTimeout = configService.get('defaultTimeout');
 export const internalAxiosInstance: AxiosInstance = new InternalAxiosInstanceFactory(
 	{
 		timeout: parseInt(defaultTimeout, 10),

@@ -14,4 +14,5 @@ export interface Props {
 	loading: string;
 	error: string;
 	login: (payload) => void;
+	loginProvider: () => void;
 }

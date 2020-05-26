@@ -2,7 +2,7 @@ import { TokenActionTypes, TOKEN_ACTION_TYPES } from './interfaces';
 import {
 	clearAuthenticationToken,
 	getAuthenticationToken,
-} from '../../../utils/authentication';
+} from '../../../core/authetication/authentication';
 
 export const tokenLoading = (payload: boolean = true): TokenActionTypes => ({
 	payload,

@@ -12,7 +12,7 @@ import { Props } from './event-interface';
 // Styles
 import styles from './styles';
 
-import { BUTTON_VARIANT_TYPES } from '../../utils/theme';
+import { BUTTON_VARIANT_TYPES } from '../../core/theme';
 
 // Redux
 import { getEvents } from './actions';
