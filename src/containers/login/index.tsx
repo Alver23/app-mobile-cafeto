@@ -9,7 +9,8 @@ import {
 	VALIDATION_MESSAGE_TYPES,
 } from '../../core/validations';
 // Redux
-import { login, loginProvider } from '../../store/actions/login';
+import { login } from '../../store/actions/login';
+import { loginProvider } from './../../store/actions/login/auth0';
 import {
 	selectLoginError,
 	selectLoginLoading,

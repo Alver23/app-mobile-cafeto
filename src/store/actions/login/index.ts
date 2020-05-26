@@ -97,5 +97,3 @@ export const logoutRequest = () => (dispatch) => {
 			},
 		);
 };
-
-export { loginProvider } from './auth0';
