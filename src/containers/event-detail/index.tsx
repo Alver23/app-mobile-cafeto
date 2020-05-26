@@ -125,7 +125,7 @@ class EventDetailContainer extends Component<PropsType, any> {
 				</ScrollView>
 				{!!isOwner && (
 					<FooterActions
-						clickEdit={() => console.log('edit event')}
+						clickEdit={() => this.props.navigation.navigate('EventForm', { id })}
 						clickRemove={() => this.props.delete(id)}
 					/>
 				)}

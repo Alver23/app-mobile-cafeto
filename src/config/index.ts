@@ -6,9 +6,10 @@ const configuration = {
 			loginProvider: '/auth/login-provider',
 		},
 		events: {
-			getUrl: '/events',
+			get: '/events',
 			post: '/events',
-			delete: '/events',
+			delete: '/events/',
+			put: '/events/',
 		},
 	},
 	defaultTimeout: 5000,

@@ -16,6 +16,11 @@ export const selectLoading = createSelector(
 
 export const selectEventById = createSelector(
 	selectEvents,
-	(_, props) => props.route.params.id,
+	(_, props) => {
+		const {
+			route: { params: { id } = { id: '' } },
+		} = props;
+		return id;
+	},
 	(events, value) => events.find((item) => item.id === value) || {},
 );

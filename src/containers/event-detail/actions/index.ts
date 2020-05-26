@@ -27,17 +27,14 @@ export const deleteEvent = (payload: number) => (dispatch) => {
 		.delete(payload)
 		.then((_) => {
 			dispatch(loading(false));
-			// dispatch(getEvents());
 			dispatch(removeEventSuccess('The Record was deleted successfully'));
 		})
-		.catch(
-			({
-				response: {
-					data: { message },
-				},
-			}) => {
-				dispatch(removeEventFailure(message));
-				dispatch(loading(false));
-			},
-		);
+		.catch((error) => {
+			dispatch(removeEventFailure(error));
+			dispatch(loading(false));
+		});
+};
+
+export const updateEvent = (payload: any, id: number) => (dispatch) => {
+	dispatch(loading());
 };

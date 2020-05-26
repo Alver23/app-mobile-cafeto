@@ -1,12 +1,5 @@
-// Utils
-import { internalAxiosInstance } from '../../../core/axios-instance/axios-instance';
-
-import { configService } from '../../../config';
-
-const {
-	basePath,
-	events: { getUrl },
-} = configService.get('api');
+// Services
+import { eventService } from '../../../services/event-service';
 
 // Models
 import { EventActionTypes, EVENTS_ACTION_TYPES } from './interfaces';
@@ -24,15 +17,15 @@ export const loadEventSuccess = (
 	type: EVENTS_ACTION_TYPES.loadEventsSuccess,
 });
 
-export const loadEventFailure = (payload: Error): EventActionTypes => ({
+export const loadEventFailure = (payload: string): EventActionTypes => ({
 	payload,
 	type: EVENTS_ACTION_TYPES.loadEventsFailure,
 });
 
 export const getEvents = () => (dispatch) => {
 	dispatch(eventLoading());
-	internalAxiosInstance
-		.get(`${basePath}${getUrl}`)
+	eventService
+		.getEvents()
 		.then((response) => {
 			const { data } = response;
 			dispatch(loadEventSuccess(data));

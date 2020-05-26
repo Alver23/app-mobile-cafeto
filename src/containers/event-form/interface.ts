@@ -1,9 +1,13 @@
+// Models
+import { ApiResponseEvent } from '../events/event-interface';
+
 export interface Props {
 	loading: boolean;
 	error: string;
 	response: string;
-	saveForm: (payload) => void;
+	createOrUpdate: (payload, id) => void;
 	resetActions: () => void;
+	event: ApiResponseEvent;
 }
 export interface State {
 	title: string;
