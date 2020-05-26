@@ -1,13 +1,12 @@
 // Utils
 import { internalAxiosInstance } from '../../../core/axios-instance/axios-instance';
 
-import { config } from '../../../config';
+import { configService } from '../../../config';
+
 const {
-	api: {
-		basePath,
-		events: { getUrl },
-	},
-} = config;
+	basePath,
+	events: { getUrl },
+} = configService.get('api');
 
 // Models
 import { EventActionTypes, EVENTS_ACTION_TYPES } from './interfaces';

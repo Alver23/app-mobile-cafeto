@@ -15,6 +15,7 @@ export interface User extends LoginRequestPayload {
 }
 
 export interface LoginLoading {
+	payload: boolean;
 	type: LOGIN_ACTION_TYPES.loginRequest;
 }
 

@@ -25,7 +25,7 @@ export const loginReducer = (
 		case LOGIN_ACTION_TYPES.loginRequest:
 			return {
 				...state,
-				loading: true,
+				loading: action.payload,
 			};
 		case LOGIN_ACTION_TYPES.loginSuccess:
 			const {
@@ -35,16 +35,14 @@ export const loginReducer = (
 				...state,
 				user: { ...user },
 				error: null,
-				loading: false,
 			};
 		case LOGIN_ACTION_TYPES.loginFailure:
 			return {
 				...state,
 				error: action.payload,
-				loading: false,
 			};
 		case LOGIN_ACTION_TYPES.logoutRequest:
-			return { ...state, user: null, loading: false };
+			return { ...state, user: null };
 		default:
 			return state;
 	}
