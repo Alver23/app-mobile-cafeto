@@ -3,9 +3,10 @@ import React, { FC } from 'react';
 import { View } from 'react-native';
 import MapboxGL from '@react-native-mapbox-gl/maps';
 
-MapboxGL.setAccessToken(
-	'pk.eyJ1IjoiYWx2ZXIyMyIsImEiOiJja2FtNnZobTEwMjd5MnFsdTBmd2c5bGI2In0.tU-ldGBRyBON1FQLpzKvCA',
-);
+// Service
+import { configService } from '../../config';
+
+MapboxGL.setAccessToken(configService.get('mapBoxToken'));
 
 // Models
 import { Props } from './interface';

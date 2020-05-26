@@ -13,9 +13,9 @@ import { externalAxiosInstance } from '../../../core/axios-instance/axios-instan
 export const loginProvider = () => (dispatch) => {
 	const {
 		basePath,
-		auth: { loginProvider },
+		auth: { loginProvider: loginProviderUrl },
 	} = configService.get('api');
-	const url = `${basePath}${loginProvider}`;
+	const url = `${basePath}${loginProviderUrl}`;
 	dispatch(loginLoading());
 	auth0Service.webAuth
 		.authorize({

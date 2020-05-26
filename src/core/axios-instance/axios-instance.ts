@@ -37,14 +37,14 @@ export class ExternalAxiosInstanceFactory {
 const defaultTimeout = configService.get('defaultTimeout');
 export const internalAxiosInstance: AxiosInstance = new InternalAxiosInstanceFactory(
 	{
-		timeout: parseInt(defaultTimeout, 10),
+		timeout: defaultTimeout,
 		headers: { 'content-type': 'application/json' },
 	},
 ).instance();
 
 export const externalAxiosInstance: AxiosInstance = new ExternalAxiosInstanceFactory(
 	{
-		timeout: parseInt(defaultTimeout, 10),
+		timeout: defaultTimeout,
 		headers: { 'content-type': 'application/json' },
 	},
 ).instance();

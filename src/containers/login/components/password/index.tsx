@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Text, TextInput } from 'react-native';
 
 import { LoginContext } from '../../login-context';
@@ -19,7 +19,7 @@ export default () => {
 				const { password, onChangePassword } = context;
 				const { error } = password;
 				return (
-					<>
+					<Fragment>
 						<Text>Password</Text>
 						<TextInput
 							textContentType="password"
@@ -28,7 +28,7 @@ export default () => {
 							onChangeText={(value) => onChangePassword(value)}
 						/>
 						<TextError message={error} />
-					</>
+					</Fragment>
 				);
 			}}
 		</LoginContext.Consumer>

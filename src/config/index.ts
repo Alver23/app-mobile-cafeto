@@ -1,4 +1,4 @@
-export const config = {
+const configuration = {
 	api: {
 		basePath: 'http://localhost:3000/cafeto/api',
 		auth: {
@@ -7,6 +7,8 @@ export const config = {
 		},
 		events: {
 			getUrl: '/events',
+			post: '/events',
+			delete: '/events',
 		},
 	},
 	defaultTimeout: 5000,
@@ -26,4 +28,4 @@ export class ConfigService {
 	}
 }
 
-export const configService = new ConfigService(config);
+export const configService = new ConfigService(configuration);

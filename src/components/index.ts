@@ -11,3 +11,4 @@ export {
 } from './card';
 export { default as Footer } from './footer';
 export { default as Map } from './map-box';
+export { TextInput } from './form';

@@ -20,6 +20,7 @@
     "@react-navigation/stack": "^5.3.9",
     "axios": "^0.19.2",
     "base-64": "^0.1.0",
+    "formik": "^2.1.4",
     "jwt-decode": "^2.2.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
@@ -34,7 +35,8 @@
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "yup": "^0.29.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -46,6 +48,7 @@
     "@types/jest": "^24.0.24",
     "@types/react-native": "^0.62.0",
     "@types/react-test-renderer": "16.9.2",
+    "@types/yup": "^0.29.0",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "babel-jest": "^24.9.0",

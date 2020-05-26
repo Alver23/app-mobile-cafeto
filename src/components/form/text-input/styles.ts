@@ -1,8 +1,11 @@
+// Dependencies
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
 	container: {
-		margin: 8,
-		flex: 1,
+		margin: 4,
+	},
+	label: {
+		fontWeight: 'bold',
 	},
 });

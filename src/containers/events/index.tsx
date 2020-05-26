@@ -4,7 +4,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import { SafeAreaView } from 'react-native';
 
 // Components
-import { LoadingIndicator, Button, CardList } from '../../components';
+import { LoadingIndicator, Button, CardList, Footer } from '../../components';
 
 // Models
 import { Props } from './event-interface';
@@ -12,7 +12,7 @@ import { Props } from './event-interface';
 // Styles
 import styles from './styles';
 
-import { BUTTON_VARIANT_TYPES } from '../../core/theme';
+import { BUTTON_VARIANT_TYPES, BUTTON_SIZE_TYPES } from '../../core/theme';
 
 // Redux
 import { getEvents } from './actions';
@@ -54,11 +54,20 @@ class EventsContainer extends Component<PropsType, any> {
 					items={events || []}
 					onSelectedOption={this.onSelectedEvent.bind(this)}
 				/>
-				<Button
-					title="Logout"
-					variant={BUTTON_VARIANT_TYPES.primary}
-					onClick={() => this.props.logout()}
-				/>
+				<Footer>
+					<Button
+						title="New event"
+						size={BUTTON_SIZE_TYPES.small}
+						variant={BUTTON_VARIANT_TYPES.primary}
+						onClick={() => this.props.navigation.navigate('EventForm')}
+					/>
+					<Button
+						title="Logout"
+						size={BUTTON_SIZE_TYPES.small}
+						variant={BUTTON_VARIANT_TYPES.primary}
+						onClick={() => this.props.logout()}
+					/>
+				</Footer>
 			</SafeAreaView>
 		);
 	}
