@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/Alver23/app-mobile-cafeto/compare/v1.0.0...v1.1.0) (2020-05-26)
+
+
+### Features
+
+* add authentication with auth0 ([b543c86](https://github.com/Alver23/app-mobile-cafeto/commit/b543c86bad33135b0214a041edfcf34216633e21))
+
+
+### Bug Fixes
+
+* fixed cicle dependency ([731ba0a](https://github.com/Alver23/app-mobile-cafeto/commit/731ba0a6ea8d9657c08bb55623cda51dae09f36e))
+
 ## [1.0.0](https://github.com/Alver23/app-mobile-cafeto/compare/v0.1.1...v1.0.0) (2020-05-25)
 
 ### [0.1.1](https://github.com/Alver23/app-mobile-cafeto/compare/v0.1.0...v0.1.1) (2020-05-25)
