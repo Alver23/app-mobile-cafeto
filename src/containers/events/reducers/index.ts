@@ -5,7 +5,7 @@ export const eventFeatureKey = 'events';
 
 export interface EventState {
 	data: ApiResponseEvent[];
-	error: Error;
+	error: string;
 	loading: boolean;
 }
 

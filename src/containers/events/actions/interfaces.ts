@@ -17,7 +17,7 @@ export interface LoadEventSuccess {
 }
 
 export interface LoadEventFailure {
-	payload: Error;
+	payload: string;
 	type: EVENTS_ACTION_TYPES.loadEventsFailure;
 }
 

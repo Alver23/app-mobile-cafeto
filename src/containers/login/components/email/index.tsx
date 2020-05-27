@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Text, TextInput } from 'react-native';
 
 // Components
@@ -19,7 +19,7 @@ export default () => (
 			const { email, onChangeEmail } = context;
 			const { error } = email;
 			return (
-				<>
+				<Fragment>
 					<Text>Email</Text>
 					<TextInput
 						style={error ? textInputDangerStyle : textInputPrimaryStyle}
@@ -28,7 +28,7 @@ export default () => (
 						textContentType="emailAddress"
 					/>
 					<TextError message={error} />
-				</>
+				</Fragment>
 			);
 		}}
 	</LoginContext.Consumer>
