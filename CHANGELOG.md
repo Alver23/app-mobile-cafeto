@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/Alver23/app-mobile-cafeto/compare/v1.1.0...v1.2.0) (2020-05-27)
+
+
+### Features
+
+* add event form and add functionality for remove event ([6d2c086](https://github.com/Alver23/app-mobile-cafeto/commit/6d2c0864a0c4993bbc9ea5890370e57591e86ab4))
+* add form events for create or update ([9c54991](https://github.com/Alver23/app-mobile-cafeto/commit/9c549917950ed33945f83c9d41488f5dabc08110))
+* add update functionality ([1945a1d](https://github.com/Alver23/app-mobile-cafeto/commit/1945a1de43ac2116ce6330d3d2de33220bb4d73a))
+
 ## [1.1.0](https://github.com/Alver23/app-mobile-cafeto/compare/v1.0.0...v1.1.0) (2020-05-26)
 
 
