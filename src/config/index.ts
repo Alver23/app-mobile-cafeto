@@ -12,9 +12,8 @@ const configuration = {
 			put: '/events/',
 		},
 	},
-	defaultTimeout: 5000,
-	mapBoxToken:
-		'pk.eyJ1IjoiYWx2ZXIyMyIsImEiOiJja2FtNnZobTEwMjd5MnFsdTBmd2c5bGI2In0.tU-ldGBRyBON1FQLpzKvCA',
+	defaultTimeout: 20000,
+	mapBoxToken: 'pk.eyJ1IjoiYWx2ZXIyMyIsImEiOiJja2FtNnZobTEwMjd5MnFsdTBmd2c5bGI2In0.tU-ldGBRyBON1FQLpzKvCA',
 	auth0: {
 		domain: 'astrosoftwaresolutions.auth0.com',
 		clientId: 'AKvTeIgfkBfUsEfaJoKCO1fMeFFHPaIs',

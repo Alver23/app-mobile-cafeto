@@ -18,8 +18,7 @@ export default () => (
 				<View style={styles.container}>
 					<TextError
 						message={
-							genericError ||
-							(requestError ? `The user not ${requestError}` : null)
+							genericError || requestError
 						}
 					/>
 				</View>

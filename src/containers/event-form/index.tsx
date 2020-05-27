@@ -10,6 +10,7 @@ import {
 	TextInput,
 	LoadingIndicator,
 	TextError,
+  ImagePicker,
 } from '../../components';
 import { BUTTON_SIZE_TYPES, BUTTON_VARIANT_TYPES } from '../../core/theme';
 
@@ -58,6 +59,8 @@ class EventFormContainer extends Component<PropsType, State> {
 		address: '',
 		latitude: '',
 		longitude: '',
+    image: null,
+    imageData: null,
 	};
 
 	constructor(props) {
@@ -68,22 +71,21 @@ class EventFormContainer extends Component<PropsType, State> {
 	componentDidMount() {
 	  const { event } = this.props;
 	  if (Object.keys(event).length > 0) {
-	    const { title, description, address, latitude, longitude } = event;
+	    const { title, description, address, latitude, longitude, imageUrl } = event;
 	    this.setState({
         title,
         description,
         address,
         latitude,
         longitude,
+        image: imageUrl,
       })
-	    console.log('si tiene evento');
     }
   }
 
   onSubmitForm(formValues) {
 	  const { route: { params: { id } = { id: 0} } } = this.props;
-		const payload = this.removeEmptyValues(formValues);
-		this.props.createOrUpdate(payload, id);
+		this.props.createOrUpdate({...formValues, image: this.state.imageData }, id);
 	}
 
 	onCloseAlert() {
@@ -91,29 +93,21 @@ class EventFormContainer extends Component<PropsType, State> {
 		this.props.navigation.navigate('Events');
 	}
 
-	removeEmptyValues(values) {
-		let response = {};
-		Object.entries(values).forEach(([key, value]) => {
-			if (value) {
-				response = {
-					...response,
-					[key]: value,
-				};
-			}
-		});
-		return response;
-	}
+	onSelectedImage(data) {
+	  this.setState({ imageData: data });
+  }
 
 	render() {
 		const { error, loading: loadingIndicator, response } = this.props;
-		console.log('response', response);
+		let { image, imageData, ...otherValues } = this.state;
+		image && (image = { uri: image });
 		return loadingIndicator ? (
 			<LoadingIndicator />
 		) : (
 			<SafeAreaView style={styles.mainContainer}>
 				<Formik
           enableReinitialize
-					initialValues={this.state}
+					initialValues={otherValues}
 					validationSchema={eventSchema}
 					onSubmit={(values) => this.onSubmitForm(values)}>
 					{({
@@ -136,12 +130,16 @@ class EventFormContainer extends Component<PropsType, State> {
                       customProps={{
                         onChangeText: handleChange(key),
                         onBlur: handleBlur(key),
-                        value: String(values[key]),
+                        value: values[key] ? String(values[key]) : '',
                         ...customAttr,
                       }}
                     />
                   );
                 })}
+                <ImagePicker
+                  source={image}
+                  selectedImage={this.onSelectedImage.bind(this)}
+                />
                 <View style={styles.buttonContainer}>
                   <Button
                     title={'Save'}

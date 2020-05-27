@@ -2,17 +2,20 @@ export const formConfig = [
 	{
 		key: 'title',
 		label: 'Title',
-		customAttr: {
-			textContentType: 'addressState',
-		},
 	},
 	{
 		key: 'description',
 		label: 'Description',
+		customAttr: {
+			multiline: true,
+		},
 	},
 	{
 		key: 'address',
 		label: 'Address',
+		customAttr: {
+			textContentType: 'addressState',
+		},
 	},
 	{
 		key: 'latitude',

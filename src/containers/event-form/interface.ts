@@ -16,4 +16,6 @@ export interface State {
 	imageUrl?: string;
 	latitude: string;
 	longitude: string;
+	image?: any;
+	imageData?: any;
 }
