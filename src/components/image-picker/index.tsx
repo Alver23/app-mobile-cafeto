@@ -27,7 +27,7 @@ const component: FC<Props> = ({ source, selectedImage }) => {
       setLoading(false);
     });
   }
-  
+
   return (
     <View style={styles.mainContainer}>
       <TouchableOpacity onPress={selectPhotoTapped}>

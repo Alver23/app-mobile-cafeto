@@ -4,6 +4,7 @@ const configuration = {
 		auth: {
 			login: '/auth/login',
 			loginProvider: '/auth/login-provider',
+			token: '/auth/token',
 		},
 		events: {
 			get: '/events',
