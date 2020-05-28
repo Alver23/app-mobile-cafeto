@@ -16,7 +16,7 @@ export const loadEventFailure = (payload: string): EventActionTypes => ({
 	type: EVENTS_ACTION_TYPES.loadEventsFailure,
 });
 
-export const getEvents = (refreshing: boolean) => (dispatch) => {
+export const getEvents = (refreshing: boolean = false) => (dispatch) => {
 	dispatch(eventLoading({ loading: true, refreshing }));
 	eventService
 		.getEvents()

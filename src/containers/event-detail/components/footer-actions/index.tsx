@@ -1,17 +1,7 @@
-// Dependencies
 import React, { FC } from 'react';
-
-// Components
 import { Footer, Button } from '../../../../components';
-
-// Models
 import { Props } from './interface';
-
-// Theme
-import {
-	BUTTON_SIZE_TYPES,
-	BUTTON_VARIANT_TYPES,
-} from '../../../../core/theme';
+import { BUTTON_SIZE_TYPES, BUTTON_VARIANT_TYPES } from '../../../../core/theme';
 
 const component: FC<Props> = ({ clickEdit, clickRemove }) => (
 	<Footer>

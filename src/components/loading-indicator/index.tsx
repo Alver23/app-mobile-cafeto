@@ -6,9 +6,6 @@ const { ios: iosTheme, android: androidTheme } = colors;
 
 export default () => (
 	<View style={[styles.container, styles.indicator]}>
-		<ActivityIndicator
-			size="large"
-			color={Platform.OS === 'ios' ? iosTheme.primary : androidTheme.primary}
-		/>
+		<ActivityIndicator size="large" color={Platform.OS === 'ios' ? iosTheme.primary : androidTheme.primary} />
 	</View>
 );

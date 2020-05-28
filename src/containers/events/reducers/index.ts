@@ -1,10 +1,10 @@
-import { ApiResponseEvent } from '../event-interface';
+import { EventResponse } from '../../../services/event/interface';
 import { EVENTS_ACTION_TYPES, EventActionTypes } from '../actions/interfaces';
 
 export const eventFeatureKey = 'events';
 
 export interface EventState {
-	data: ApiResponseEvent[];
+	data: EventResponse[];
 	error: string;
 	loading: boolean;
 	refreshing: boolean;

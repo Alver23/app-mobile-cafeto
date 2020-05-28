@@ -1,20 +1,9 @@
-// Dependencies
 import React from 'react';
 import { View } from 'react-native';
-
-// Components
 import { Button } from '../../../../components';
-
 import { LoginContext } from '../../login-context';
-
-// Styles
 import styles from './../../style';
-
-// Theme
-import {
-	BUTTON_VARIANT_TYPES,
-	BUTTON_SIZE_TYPES,
-} from '../../../../core/theme';
+import { BUTTON_VARIANT_TYPES, BUTTON_SIZE_TYPES } from '../../../../core/theme';
 
 export default () => (
 	<LoginContext.Consumer>

@@ -13,7 +13,7 @@ const context = {
 	requestError: null,
 	onSubmitFormAuth0: () => {},
 	onSubmitForm: () => {},
-	onChangeEmail: (value) => {},
-	onChangePassword: (value) => {},
+	onChangeEmail: (value) => value,
+	onChangePassword: (value) => value,
 };
 export const LoginContext = React.createContext(context);

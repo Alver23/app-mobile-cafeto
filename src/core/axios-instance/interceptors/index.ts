@@ -28,14 +28,13 @@ export const refresTokenInterceptor = () => async (error: AxiosError) => {
 		return new Promise<any>((resolve, reject) => {
 			return axios
 				.post(uri, { refreshToken })
-				.then(async (response: AxiosResponse) => {
-					const { data } = response;
-					const { token, refreshToken } = data.data;
-					await authenticationService.setToken(token);
-					await authenticationService.setRefreshToken(refreshToken);
-					originalRequest.headers.Authorization = `Bearer ${token}`;
+				.then(async ({ data }) => {
+					const { token: newToken, refreshToken: newRefreshToken } = data.data;
+					await authenticationService.setToken(newToken);
+					await authenticationService.setRefreshToken(newRefreshToken);
+					originalRequest.headers.Authorization = `Bearer ${newToken}`;
 					axios(originalRequest)
-						.then((response: AxiosResponse) => resolve(response.data))
+						.then((res: AxiosResponse) => resolve(res.data))
 						.catch(reject);
 				})
 				.catch(reject);

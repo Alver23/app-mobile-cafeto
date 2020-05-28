@@ -1,6 +1,9 @@
 import { StyleSheet, PixelRatio } from 'react-native';
 
 export default StyleSheet.create({
+	container: {
+		marginBottom: 20,
+	},
 	mainContainer: {
 		alignItems: 'center',
 		margin: 8,

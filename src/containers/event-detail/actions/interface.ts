@@ -19,7 +19,4 @@ export interface RemoveEventFailure {
 	type: EVENT_DETAIL_ACTION_TYPES.removeEventFailure;
 }
 
-export type EventDetailActionTypes =
-	| Loading
-	| RemoveEventFailure
-	| RemoveEventSuccess;
+export type EventDetailActionTypes = Loading | RemoveEventFailure | RemoveEventSuccess;

@@ -7,15 +7,8 @@ const component: FC<CardList> = ({ items, refreshing, onRefresh, onSelectedOptio
 	return (
 		<FlatList
 			data={items}
-			renderItem={({ item }) => (
-				<CardItem {...item} onSelectedOption={onSelectedOption} />
-			)}
-      refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-        />
-      }
+			renderItem={({ item }) => <CardItem {...item} onSelectedOption={onSelectedOption} />}
+			refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
 			keyExtractor={(item) => String(item.id)}
 		/>
 	);
