@@ -1,32 +1,12 @@
-// Dependencies
 import React, { Component } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import {
-	View,
-	Text,
-	Image,
-	SafeAreaView,
-	ScrollView,
-	Alert,
-} from 'react-native';
+import { View, Text, Image, SafeAreaView, ScrollView, Alert } from 'react-native';
 
-// Components
 import { FooterActions } from './components';
-import {
-	Card,
-	CardHeader,
-	CardBody,
-	Map,
-	LoadingIndicator,
-} from '../../components';
+import { Card, CardHeader, CardBody, Map, LoadingIndicator } from '../../components';
 
-// Models
 import { Props } from './interface';
-
-// Styles
 import styles from './styles';
-
-// Redux
 import { getEvents } from '../events/actions';
 import { loading, removeEventSuccess, deleteEvent } from './actions';
 import { selectLoading, selectError, selectResponse } from './selectors';
@@ -88,15 +68,7 @@ class EventDetailContainer extends Component<PropsType, any> {
 	}
 	render() {
 		const { event, response, loading: loadingIndicator } = this.props;
-		const {
-			id,
-			title,
-			description,
-			imageUrl,
-			isOwner,
-			latitude,
-			longitude,
-		} = event;
+		const { id, title, description, imageUrl, isOwner, latitude, longitude } = event;
 		return loadingIndicator ? (
 			<LoadingIndicator />
 		) : (
@@ -117,11 +89,7 @@ class EventDetailContainer extends Component<PropsType, any> {
 							</CardBody>
 						</Card>
 					</View>
-					<Map
-						mapId={'eventDetail'}
-						data={this.getShapeData()}
-						centerCoordinate={[longitude, latitude]}
-					/>
+					<Map mapId={'eventDetail'} data={this.getShapeData()} centerCoordinate={[longitude, latitude]} />
 				</ScrollView>
 				{!!isOwner && (
 					<FooterActions
@@ -130,12 +98,7 @@ class EventDetailContainer extends Component<PropsType, any> {
 					/>
 				)}
 				{!!response &&
-					Alert.alert(
-						'Alert',
-						response,
-						[{ text: 'OK', onPress: () => this.onCloseAlert() }],
-						{ cancelable: false },
-					)}
+					Alert.alert('Alert', response, [{ text: 'OK', onPress: () => this.onCloseAlert() }], { cancelable: false })}
 			</SafeAreaView>
 		);
 	}

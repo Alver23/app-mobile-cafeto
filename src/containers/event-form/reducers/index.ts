@@ -1,7 +1,4 @@
-import {
-	EVENT_FORM_ACTION_TYPES,
-	EventFormActionTypes,
-} from '../actions/interface';
+import { EVENT_FORM_ACTION_TYPES, EventFormActionTypes } from '../actions/interface';
 
 export const eventFormFeatureKey = 'eventForm';
 
@@ -17,10 +14,7 @@ const initialState: EventFormState = {
 	response: null,
 };
 
-export const eventFormReducers = (
-	state = initialState,
-	action: EventFormActionTypes,
-) => {
+export const eventFormReducers = (state = initialState, action: EventFormActionTypes) => {
 	switch (action.type) {
 		case EVENT_FORM_ACTION_TYPES.loading:
 			return { ...state, loading: action.payload };

@@ -6,13 +6,13 @@ import { Props } from './event-interface';
 import styles from './styles';
 import { BUTTON_VARIANT_TYPES, BUTTON_SIZE_TYPES } from '../../core/theme';
 import { getEvents } from './actions';
-import {selectEvents, selectLoading, selectRefreshing} from './selectors';
+import { selectEvents, selectLoading, selectRefreshing } from './selectors';
 import { logoutRequest } from '../../store/actions/login';
 
 const mapStateToProps = (state) => ({
 	events: selectEvents(state),
 	loading: selectLoading(state),
-  refreshing: selectRefreshing(state),
+	refreshing: selectRefreshing(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -35,20 +35,20 @@ class EventsContainer extends Component<PropsType, any> {
 		this.props.navigation.navigate('EventDetail', { id });
 	}
 
-  onRefresh() {
-    this.props.getEvents(true);
-  }
+	onRefresh() {
+		this.props.getEvents(true);
+	}
 
 	render() {
 		const { events, loading, refreshing } = this.props;
-    return loading ? (
+		return loading ? (
 			<LoadingIndicator />
 		) : (
 			<SafeAreaView style={styles.container}>
 				<CardList
 					items={events || []}
-          refreshing={refreshing}
-          onRefresh={this.onRefresh.bind(this)}
+					refreshing={refreshing}
+					onRefresh={this.onRefresh.bind(this)}
 					onSelectedOption={this.onSelectedEvent.bind(this)}
 				/>
 				<Footer>

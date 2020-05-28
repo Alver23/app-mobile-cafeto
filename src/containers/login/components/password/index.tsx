@@ -1,16 +1,8 @@
 import React, { Fragment } from 'react';
 import { Text, TextInput } from 'react-native';
-
 import { LoginContext } from '../../login-context';
-
-// Components
 import { TextError } from '../../../../components';
-
-// Theme
-import {
-	textInputPrimaryStyle,
-	textInputDangerStyle,
-} from '../../../../core/theme';
+import { textInputPrimaryStyle, textInputDangerStyle } from '../../../../core/theme';
 
 export default () => {
 	return (

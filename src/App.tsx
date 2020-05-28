@@ -9,10 +9,7 @@ import { DashboardNavigator, AuthNavigator } from './navigator';
 
 // Redux
 import { getToken } from './store/actions/authentication-token';
-import {
-	selectAuthenticationToken,
-	selectAuthenticationLoading,
-} from './store/selectors/authentication-token';
+import { selectAuthenticationToken, selectAuthenticationLoading } from './store/selectors/authentication-token';
 
 import { Props, State } from './app-interface';
 

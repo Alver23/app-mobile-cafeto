@@ -11,8 +11,8 @@ export default () => (
 	<NavigationContainer>
 		<Stack.Navigator>
 			<Stack.Screen name="Events" component={EventsContainer} />
-			<Stack.Screen name="EventDetail" component={EventDetailContainer} options={{title: 'Event Detail'}} />
-			<Stack.Screen name="EventForm" component={EventForm} options={{title: 'Event Form'}} />
+			<Stack.Screen name="EventDetail" component={EventDetailContainer} options={{ title: 'Event Detail' }} />
+			<Stack.Screen name="EventForm" component={EventForm} options={{ title: 'Event Form' }} />
 		</Stack.Navigator>
 	</NavigationContainer>
 );

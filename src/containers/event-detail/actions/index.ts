@@ -1,5 +1,4 @@
 import { EVENT_DETAIL_ACTION_TYPES, EventDetailActionTypes } from './interface';
-// Service
 import { eventService } from '../../../services/event';
 
 export const loading = (payload: boolean = true): EventDetailActionTypes => ({
@@ -29,8 +28,4 @@ export const deleteEvent = (payload: number) => (dispatch) => {
 			dispatch(removeEventFailure(error));
 			dispatch(loading(false));
 		});
-};
-
-export const updateEvent = (payload: any, id: number) => (dispatch) => {
-	dispatch(loading());
 };

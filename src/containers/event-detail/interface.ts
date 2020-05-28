@@ -1,8 +1,8 @@
-import { ApiResponseEvent } from '../events/event-interface';
+import { EventResponse } from '../../services/event/interface';
 
 export interface Props {
 	route: any;
-	event: ApiResponseEvent;
+	event: EventResponse;
 	loading: boolean;
 	error: string;
 	response: string;

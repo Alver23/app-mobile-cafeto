@@ -1,4 +1,4 @@
-import { ApiResponseEvent } from '../event-interface';
+import { EventResponse } from '../../../services/event/interface';
 
 export enum EVENTS_ACTION_TYPES {
 	eventLoading = '[EVENTS] Loading',
@@ -15,7 +15,7 @@ export interface EventLoading {
 }
 
 export interface LoadEventSuccess {
-	payload: ApiResponseEvent[];
+	payload: EventResponse[];
 	type: EVENTS_ACTION_TYPES.loadEventsSuccess;
 }
 

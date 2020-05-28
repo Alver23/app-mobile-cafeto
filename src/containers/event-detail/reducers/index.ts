@@ -1,7 +1,4 @@
-import {
-	EVENT_DETAIL_ACTION_TYPES,
-	EventDetailActionTypes,
-} from '../actions/interface';
+import { EVENT_DETAIL_ACTION_TYPES, EventDetailActionTypes } from '../actions/interface';
 
 export const eventDetailFeatureKey = 'eventDetail';
 
@@ -17,10 +14,7 @@ const initialState: EventDetailState = {
 	response: null,
 };
 
-export const eventDetailReducer = (
-	state = initialState,
-	action: EventDetailActionTypes,
-) => {
+export const eventDetailReducer = (state = initialState, action: EventDetailActionTypes) => {
 	switch (action.type) {
 		case EVENT_DETAIL_ACTION_TYPES.loading:
 			return { ...state, loading: action.payload };

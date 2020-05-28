@@ -1,26 +1,14 @@
-// Dependencies
 import React, { Component } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { SafeAreaView } from 'react-native';
 
-import {
-	email as emailValidation,
-	getMessage,
-	VALIDATION_MESSAGE_TYPES,
-} from '../../core/validations';
-// Redux
+import { email as emailValidation, getMessage, VALIDATION_MESSAGE_TYPES } from '../../core/validations';
 import { login } from '../../store/actions/login';
 import { loginProvider } from './../../store/actions/login/auth0';
-import {
-	selectLoginError,
-	selectLoginLoading,
-} from '../../store/selectors/login';
-// Components
+import { selectLoginError, selectLoginLoading } from '../../store/selectors/login';
 import { LoginView } from './components';
 import { LoadingIndicator } from '../../components';
-// Models
 import { Props, State } from './login-interface';
-// Styles
 import styles from './style';
 
 import { LoginContext } from './login-context';
@@ -55,18 +43,14 @@ class LoginContainer extends Component<PropsType, State> {
 	};
 
 	onChangeEmail = (value: string) => {
-		const error = !emailValidation(value)
-			? getMessage(VALIDATION_MESSAGE_TYPES.email)()
-			: null;
+		const error = !emailValidation(value) ? getMessage(VALIDATION_MESSAGE_TYPES.email)() : null;
 		let genericError = this.state.genericError;
 		!error && (genericError = null);
 		this.setState({ email: { value, error }, genericError });
 	};
 
 	onChangePassword = (value: string) => {
-		const error = !value
-			? getMessage(VALIDATION_MESSAGE_TYPES.required)('password')
-			: null;
+		const error = !value ? getMessage(VALIDATION_MESSAGE_TYPES.required)('password') : null;
 		this.setState({ password: { value, error } });
 	};
 
@@ -79,10 +63,7 @@ class LoginContainer extends Component<PropsType, State> {
 			this.props.login({ email: emailValue, password: passwordValue });
 		} else {
 			this.setState({
-				genericError: getMessage(VALIDATION_MESSAGE_TYPES.twoRequired)(
-					'email',
-					'password',
-				),
+				genericError: getMessage(VALIDATION_MESSAGE_TYPES.twoRequired)('email', 'password'),
 			});
 		}
 	};

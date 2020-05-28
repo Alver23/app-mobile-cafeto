@@ -1,11 +1,7 @@
 import { createSelector } from 'reselect';
-import {
-	authenticationTokenFeatureKey,
-	AuthenticationTokenState,
-} from '../../reducers/authentication-token';
+import { authenticationTokenFeatureKey, AuthenticationTokenState } from '../../reducers/authentication-token';
 
-export const selectAuthenticationState = (state) =>
-	state[authenticationTokenFeatureKey];
+export const selectAuthenticationState = (state) => state[authenticationTokenFeatureKey];
 
 export const selectAuthenticationToken = createSelector(
 	selectAuthenticationState,

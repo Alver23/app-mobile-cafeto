@@ -1,5 +1,4 @@
-// Models
-import { ApiResponseEvent } from '../events/event-interface';
+import { EventResponse } from '../../services/event/interface';
 
 export interface Props {
 	loading: boolean;
@@ -7,7 +6,7 @@ export interface Props {
 	response: string;
 	createOrUpdate: (payload, id) => void;
 	resetActions: () => void;
-	event: ApiResponseEvent;
+	event: EventResponse;
 }
 export interface State {
 	title: string;

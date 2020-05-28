@@ -1,17 +1,8 @@
 import React, { Fragment } from 'react';
 import { Text, TextInput } from 'react-native';
-
-// Components
 import { TextError } from '../../../../components';
-
-// Context
 import { LoginContext } from '../../login-context';
-
-// Theme
-import {
-	textInputPrimaryStyle,
-	textInputDangerStyle,
-} from '../../../../core/theme';
+import { textInputPrimaryStyle, textInputDangerStyle } from '../../../../core/theme';
 
 export default () => (
 	<LoginContext.Consumer>

@@ -12,11 +12,7 @@ const component: FC<Props> = ({ mapId, data, centerCoordinate }) => {
 		<View style={styles.mainContainer}>
 			<View style={styles.mapContainer}>
 				<MapboxGL.MapView style={styles.map}>
-					<MapboxGL.Camera
-						zoomLevel={16}
-						animationMode={'flyTo'}
-						centerCoordinate={centerCoordinate}
-					/>
+					<MapboxGL.Camera zoomLevel={16} animationMode={'flyTo'} centerCoordinate={centerCoordinate} />
 					<MapboxGL.ShapeSource id={mapId} shape={data}>
 						<MapboxGL.SymbolLayer id="iconMap" style={iconStyle} />
 					</MapboxGL.ShapeSource>

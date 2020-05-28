@@ -6,10 +6,7 @@ import CardFooter from './../card-footer';
 import CardHeader from './../card-body';
 import { CardItem } from '../../card-interface';
 import styles from './../../styles';
-import {
-	BUTTON_SIZE_TYPES,
-	BUTTON_VARIANT_TYPES,
-} from '../../../../core/theme';
+import { BUTTON_SIZE_TYPES, BUTTON_VARIANT_TYPES } from '../../../../core/theme';
 
 const component: FC<CardItem> = ({ id, title, address, onSelectedOption }) => {
 	return (
