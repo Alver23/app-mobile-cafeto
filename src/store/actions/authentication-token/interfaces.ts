@@ -12,7 +12,10 @@ export interface TokenLoading {
 
 export interface SaveToken {
 	type: TOKEN_ACTION_TYPES.saveToken;
-	payload: string;
+	payload: {
+		token: string;
+		refreshToken: string;
+	};
 }
 
 export interface TokenFailure {
@@ -24,8 +27,4 @@ export interface ClearToken {
 	type: TOKEN_ACTION_TYPES.clearToken;
 }
 
-export type TokenActionTypes =
-	| TokenLoading
-	| SaveToken
-	| TokenFailure
-	| ClearToken;
+export type TokenActionTypes = TokenLoading | SaveToken | TokenFailure | ClearToken;

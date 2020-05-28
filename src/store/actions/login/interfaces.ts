@@ -10,8 +10,10 @@ export interface LoginRequestPayload {
 	password: string;
 }
 
-export interface User extends LoginRequestPayload {
+export interface User {
 	id: number;
+	email: string;
+	name: string;
 }
 
 export interface LoginLoading {
@@ -21,7 +23,6 @@ export interface LoginLoading {
 
 export interface LoginSuccessPayload {
 	user: User;
-	token: string;
 }
 export interface LoginSuccess {
 	payload: LoginSuccessPayload;
@@ -37,8 +38,4 @@ export interface LogoutRequest {
 	type: LOGIN_ACTION_TYPES.logoutRequest;
 }
 
-export type LoginActionTypes =
-	| LoginLoading
-	| LoginSuccess
-	| LoginFailure
-	| LogoutRequest;
+export type LoginActionTypes = LoginLoading | LoginSuccess | LoginFailure | LogoutRequest;

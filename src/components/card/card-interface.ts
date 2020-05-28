@@ -25,6 +25,8 @@ export interface Item {
 export interface CardList {
 	items: Item[];
 	onSelectedOption?: any;
+	refreshing: boolean;
+	onRefresh: () => void;
 }
 
 export interface CardItem extends Item {

@@ -1,4 +1,3 @@
-// Dependencies
 import { ReactNode } from 'react';
 
 export interface Props {

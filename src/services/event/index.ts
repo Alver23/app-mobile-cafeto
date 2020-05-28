@@ -1,15 +1,14 @@
-import { AxiosInstance, AxiosError } from 'axios';
-// Services
 import { configService } from '../../config';
-import { internalAxiosInstance } from '../../core/axios-instance/axios-instance';
+import { connector, Connector } from '../../core';
 
-// Models
-import { ApiResponseEvent } from '../../containers/events/event-interface';
+import { EventRequest, EventResponse } from './interface';
 
 export class EventService {
 	private readonly eventPath: any;
 	private readonly basePath: string;
-	constructor(private readonly http: AxiosInstance) {
+	private readonly headers = { 'content-type': 'multipart/form-data' };
+
+	constructor(private readonly http: Connector) {
 		({ basePath: this.basePath, events: this.eventPath } = configService.get('api'));
 	}
 
@@ -31,52 +30,35 @@ export class EventService {
 				uri: image.uri,
 			});
 		}
-		console.log('response', response, 'isNew', isNew, 'image', image);
 		return response;
 	}
 
-	create(payload): Promise<any> {
+	create(payload): Promise<EventResponse> {
 		const url = `${this.basePath}${this.eventPath.post}`;
-		return new Promise<any>((resolve, reject) => {
-			this.http
-				.post(url, payload, { headers: { 'content-type': 'multipart/form-data' } })
-				.then((response) => resolve(response))
-				.catch(({ response: { data: { message } } }) => reject(message));
-		});
+		return this.http.post<EventResponse>(url, payload, { headers: this.headers });
 	}
 
-	update(id, payload): Promise<any> {
+	update(id: number, payload): Promise<any> {
 		const url = `${this.basePath}${this.eventPath.put}${id}`;
 		return new Promise<any>((resolve, reject) => {
 			this.http
-				.put(url, payload, { headers: { 'content-type': 'multipart/form-data' } })
+				.put(url, payload, { headers: this.headers })
 				.then((_) => resolve({ message: 'The Record was updated successfully' }))
-				.catch(({ response: { data: { message } } }) => reject(message));
+				.catch(reject);
 		});
 	}
 
-	createOrUpdate(payload, id): Promise<any> {
+	createOrUpdate(payload: EventRequest, id: number): Promise<any> {
 		const data = this.createFormData(payload, !id);
 		if (id) {
 			return this.update(id, data);
 		}
-
 		return this.create(data);
 	}
 
-	getEvents(): Promise<any> {
+	getEvents(): Promise<EventRequest[]> {
 		const url = `${this.basePath}${this.eventPath.get}`;
-		return new Promise((resolve, reject) => {
-			this.http
-				.get<ApiResponseEvent[]>(url)
-				.then((response) => resolve(response))
-				.catch((error: AxiosError) => {
-					const { response = { data: {} } } = error;
-					const { data = { message: '' } } = response;
-					const { message } = data;
-					reject(message);
-				});
-		});
+		return this.http.get<EventRequest[]>(url).then((response: any) => response.data);
 	}
 
 	delete(id: number): Promise<any> {
@@ -85,9 +67,9 @@ export class EventService {
 			this.http
 				.delete(url)
 				.then((_) => resolve({ message: 'The Record was deleted successfully' }))
-				.catch(({ response: { data: { message } } }) => reject(message));
+				.catch(reject);
 		});
 	}
 }
 
-export const eventService = new EventService(internalAxiosInstance);
+export const eventService = new EventService(connector);

@@ -1,18 +1,11 @@
-// Dependencies
 import React, { FC } from 'react';
 import { View } from 'react-native';
 import MapboxGL from '@react-native-mapbox-gl/maps';
-
-// Service
 import { configService } from '../../config';
+import { Props } from './interface';
+import styles, { iconStyle } from './styles';
 
 MapboxGL.setAccessToken(configService.get('mapBoxToken'));
-
-// Models
-import { Props } from './interface';
-
-// Styles
-import styles, { iconStyle } from './styles';
 
 const component: FC<Props> = ({ mapId, data, centerCoordinate }) => {
 	return (

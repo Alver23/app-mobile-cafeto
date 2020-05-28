@@ -1,11 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-
-import {
-	headerAsBearerTokenInterceptor,
-	responseInterceptor,
-} from './interceptors';
-
 import { configService } from '../../config';
+import { headerAsBearerTokenInterceptor, responseInterceptor, refresTokenInterceptor } from './interceptors';
 
 export class InternalAxiosInstanceFactory {
 	private readonly http: AxiosInstance;
@@ -16,7 +11,7 @@ export class InternalAxiosInstanceFactory {
 
 	instance(): AxiosInstance {
 		this.http.interceptors.request.use(headerAsBearerTokenInterceptor());
-		this.http.interceptors.response.use(responseInterceptor());
+		this.http.interceptors.response.use(responseInterceptor(), refresTokenInterceptor());
 		return this.http;
 	}
 }
@@ -35,16 +30,12 @@ export class ExternalAxiosInstanceFactory {
 }
 
 const defaultTimeout = configService.get('defaultTimeout');
-export const internalAxiosInstance: AxiosInstance = new InternalAxiosInstanceFactory(
-	{
-		timeout: defaultTimeout,
-		headers: { 'content-type': 'application/json' },
-	},
-).instance();
+export const internalAxiosInstance: AxiosInstance = new InternalAxiosInstanceFactory({
+	timeout: defaultTimeout,
+	headers: { 'content-type': 'application/json' },
+}).instance();
 
-export const externalAxiosInstance: AxiosInstance = new ExternalAxiosInstanceFactory(
-	{
-		timeout: defaultTimeout,
-		headers: { 'content-type': 'application/json' },
-	},
-).instance();
+export const externalAxiosInstance: AxiosInstance = new ExternalAxiosInstanceFactory({
+	timeout: defaultTimeout,
+	headers: { 'content-type': 'application/json' },
+}).instance();

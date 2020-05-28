@@ -1,16 +1,8 @@
-// Dependencies
 import React, { FC } from 'react';
 import { TextInput, Text, View } from 'react-native';
-
-// Components
 import { TextError } from '../../index';
-
-// Models
 import { Props } from './interface';
-
-// Styles
 import styles from './styles';
-// Theme
 import {
 	textInputPrimaryStyle,
 	textInputDangerStyle,

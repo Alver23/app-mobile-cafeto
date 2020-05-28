@@ -5,6 +5,7 @@
   "collectCoverage": true,
   "collectCoverageFrom": ["**/*ts", "!**/*-mock.ts"],
   "coverageDirectory": "coverage",
+  "setupFiles": ["./jest-setup-file"],
   "moduleFileExtensions": [
     "ts",
     "tsx",

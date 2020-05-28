@@ -1,22 +1,10 @@
-// Components
 import React, { FC } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-
-// Theme
 import {
 	buttonVariants,
 	buttonSizes,
-	BUTTON_VARIANT_TYPES,
-	BUTTON_SIZE_TYPES,
 } from '../../core/theme';
-
-interface Props {
-	title: string;
-	isDisabled?: boolean;
-	size?: BUTTON_SIZE_TYPES;
-	variant: BUTTON_VARIANT_TYPES;
-	onClick?: any;
-}
+import { Props } from "./interface";
 
 const component: FC<Props> = ({
 	title,
