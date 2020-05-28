@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/Alver23/app-mobile-cafeto/compare/v1.2.0...v1.3.0) (2020-05-28)
+
+
+### Features
+
+* add interceptor for refresh token and refactor services ([fb2cd87](https://github.com/Alver23/app-mobile-cafeto/commit/fb2cd87ef94067a40ba3ee552e860ebe8cd7c09a))
+* add refresh token interceptor ([27328b9](https://github.com/Alver23/app-mobile-cafeto/commit/27328b96e1ecdb33287f617e8df32a9ff0018e30))
+* refactor project ([3eaa412](https://github.com/Alver23/app-mobile-cafeto/commit/3eaa41267660fcb92a7f32e2f743cb904c98e77a))
+
 ## [1.2.0](https://github.com/Alver23/app-mobile-cafeto/compare/v1.1.0...v1.2.0) (2020-05-27)
 
 
