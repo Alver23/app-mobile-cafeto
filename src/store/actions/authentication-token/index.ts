@@ -1,10 +1,5 @@
 import { TokenActionTypes, TOKEN_ACTION_TYPES } from './interfaces';
-import {
-	clearAuthenticationToken,
-	clearRefreshToken,
-	getAuthenticationToken,
-	getRefreshToken,
-} from '../../../core/authetication/authentication';
+import { authenticationService } from '../../../core/authetication/authentication';
 
 export const tokenLoading = (payload: boolean = true): TokenActionTypes => ({
 	payload,
@@ -27,7 +22,7 @@ export const clearToken = (): TokenActionTypes => ({
 
 export const getToken = () => (dispatch) => {
 	dispatch(tokenLoading());
-	Promise.all([getAuthenticationToken(), getRefreshToken()])
+	Promise.all([authenticationService.getToken(), authenticationService.getRefreshToken()])
 		.then((response) => {
 			const [token, refreshToken] = response;
 			dispatch(saveToken({ token, refreshToken }));
@@ -37,7 +32,7 @@ export const getToken = () => (dispatch) => {
 
 export const removeToken = () => (dispatch) => {
 	dispatch(tokenLoading());
-	Promise.all([clearAuthenticationToken(), clearRefreshToken()])
+	Promise.all([authenticationService.clearToken(), authenticationService.clearRefreshToken()])
 		.then((_) => dispatch(clearToken()))
 		.catch((error) => dispatch(tokenFailure(error)));
 };

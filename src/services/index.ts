@@ -1,1 +1,2 @@
-export { eventService } from './event-service';
+export { eventService } from './event';
+export { authService } from './auth';

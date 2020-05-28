@@ -1,11 +1,9 @@
-// Dependencies
 import React, {FC, useState} from "react";
 import {Image, Text, View, TouchableOpacity, ActivityIndicator, Platform} from "react-native";
 import ImagePicker from 'react-native-image-picker';
 
 import { colors } from '../../core/theme';
 const { ios: iosTheme, android: androidTheme } = colors;
-
 import { config } from "./config";
 import styles from './styles'
 

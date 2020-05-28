@@ -1,22 +1,18 @@
 import { EVENT_DETAIL_ACTION_TYPES, EventDetailActionTypes } from './interface';
 // Service
-import { eventService } from '../../../services/event-service';
+import { eventService } from '../../../services/event';
 
 export const loading = (payload: boolean = true): EventDetailActionTypes => ({
 	payload,
 	type: EVENT_DETAIL_ACTION_TYPES.loading,
 });
 
-export const removeEventSuccess = (
-	payload: string,
-): EventDetailActionTypes => ({
+export const removeEventSuccess = (payload: string): EventDetailActionTypes => ({
 	payload,
 	type: EVENT_DETAIL_ACTION_TYPES.removeEventSuccess,
 });
 
-export const removeEventFailure = (
-	payload: string,
-): EventDetailActionTypes => ({
+export const removeEventFailure = (payload: string): EventDetailActionTypes => ({
 	payload,
 	type: EVENT_DETAIL_ACTION_TYPES.removeEventFailure,
 });

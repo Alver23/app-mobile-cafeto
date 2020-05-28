@@ -1,50 +1,25 @@
-// Actions
 import { saveToken } from '../authentication-token';
 import { loginSuccess, loginFailure, loginLoading } from './index';
-
-import { setAuthenticationToken } from '../../../core/authetication/authentication';
-
-// Services
-import { configService } from '../../../config';
-import { jwtService } from '../../../core/jwt/jwt-service';
-import { auth0Service } from '../../../core/authetication/auth0';
-import { externalAxiosInstance } from '../../../core/axios-instance/axios-instance';
+import { authService } from '../../../services';
+import { authenticationService, auth0Service } from '../../../core';
 
 export const loginProvider = () => (dispatch) => {
-	const {
-		basePath,
-		auth: { loginProvider: loginProviderUrl },
-	} = configService.get('api');
-	const url = `${basePath}${loginProviderUrl}`;
 	dispatch(loginLoading());
-	auth0Service.webAuth
-		.authorize({
-			scope: 'openid profile email',
-		})
-		.then(async (credentials) => {
-			const { idToken } = credentials;
-			const response = jwtService.decodeToken(idToken);
+	auth0Service
+		.authorize()
+		.then(async (response) => {
 			const { name, email, sub } = response;
 			const newEmail = email || `${name.replace(' ', '')}@email.com`;
-			const { data } = await externalAxiosInstance.post(url, {
-				name,
-				email: newEmail,
-				password: sub,
-			});
-			const { user, token } = data;
-			await setAuthenticationToken(token);
-			dispatch(saveToken(token));
-			dispatch(loginSuccess(user));
+			const data = await authService.loginProvider({ name, email: newEmail, password: sub });
+			const { user, token, refreshToken } = data;
+			await authenticationService.setToken(token);
+			await authenticationService.setRefreshToken(refreshToken);
+			dispatch(saveToken({ token, refreshToken }));
+			dispatch(loginSuccess({ user }));
 			dispatch(loginLoading(false));
 		})
-		.catch(
-			({
-				response: {
-					data: { message },
-				},
-			}) => {
-				dispatch(loginFailure(message));
-				dispatch(loginLoading(false));
-			},
-		);
+		.catch((error) => {
+			dispatch(loginFailure(error));
+			dispatch(loginLoading(false));
+		});
 };

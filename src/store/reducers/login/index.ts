@@ -1,14 +1,10 @@
-import {
-	User,
-	LOGIN_ACTION_TYPES,
-	LoginActionTypes,
-} from '../../actions/login/interfaces';
+import { User, LOGIN_ACTION_TYPES, LoginActionTypes } from '../../actions/login/interfaces';
 
 export const loginFeatureKey = 'login';
 
 export interface LoginState {
 	user: User;
-	error: Error;
+	error: string;
 	loading: boolean;
 }
 const initialState: LoginState = {
@@ -17,10 +13,7 @@ const initialState: LoginState = {
 	loading: false,
 };
 
-export const loginReducer = (
-	state = initialState,
-	action: LoginActionTypes,
-) => {
+export const loginReducer = (state = initialState, action: LoginActionTypes) => {
 	switch (action.type) {
 		case LOGIN_ACTION_TYPES.loginRequest:
 			return {

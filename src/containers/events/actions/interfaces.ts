@@ -7,7 +7,10 @@ export enum EVENTS_ACTION_TYPES {
 }
 
 export interface EventLoading {
-	payload: boolean;
+	payload: {
+		loading: boolean;
+		refreshing?: boolean;
+	};
 	type: EVENTS_ACTION_TYPES.eventLoading;
 }
 
@@ -21,7 +24,4 @@ export interface LoadEventFailure {
 	type: EVENTS_ACTION_TYPES.loadEventsFailure;
 }
 
-export type EventActionTypes =
-	| EventLoading
-	| LoadEventSuccess
-	| LoadEventFailure;
+export type EventActionTypes = EventLoading | LoadEventSuccess | LoadEventFailure;

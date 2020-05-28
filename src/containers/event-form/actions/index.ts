@@ -1,8 +1,5 @@
 import { EventFormActionTypes, EVENT_FORM_ACTION_TYPES } from './interface';
-import { getEvents } from '../../events/actions';
-
-// Services
-import { eventService } from '../../../services/event-service';
+import { eventService } from '../../../services/event';
 
 export const loading = (payload: boolean = true): EventFormActionTypes => ({
 	payload,
@@ -19,14 +16,11 @@ export const saveFormFailure = (payload: string): EventFormActionTypes => ({
 	type: EVENT_FORM_ACTION_TYPES.saveFormFailure,
 });
 
-export const createOrUpdate = (payload: any, id: number | null) => (
-	dispatch,
-) => {
+export const createOrUpdate = (payload: any, id: number | null) => (dispatch) => {
 	dispatch(loading());
 	eventService
 		.createOrUpdate(payload, id)
-		.then((response: any) => {
-			const { message } = response;
+		.then(({ message }) => {
 			dispatch(saveFormSuccess(message));
 			dispatch(loading(false));
 		})

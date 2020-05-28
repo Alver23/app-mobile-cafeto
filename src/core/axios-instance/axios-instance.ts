@@ -1,8 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-
-import { headerAsBearerTokenInterceptor, responseInterceptor, refresTokenInterceptor } from './interceptors';
-
 import { configService } from '../../config';
+import { headerAsBearerTokenInterceptor, responseInterceptor, refresTokenInterceptor } from './interceptors';
 
 export class InternalAxiosInstanceFactory {
 	private readonly http: AxiosInstance;

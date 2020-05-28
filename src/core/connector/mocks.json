@@ -1,0 +1,7 @@
+{
+  "data": {"message": "fake message"},
+  "status": 200,
+  "statusText": "status text",
+  "config": {},
+  "headers": {}
+}

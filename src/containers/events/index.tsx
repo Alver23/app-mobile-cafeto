@@ -1,31 +1,22 @@
-// Dependencies
 import React, { Component } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { SafeAreaView } from 'react-native';
-
-// Components
 import { LoadingIndicator, Button, CardList, Footer } from '../../components';
-
-// Models
 import { Props } from './event-interface';
-
-// Styles
 import styles from './styles';
-
 import { BUTTON_VARIANT_TYPES, BUTTON_SIZE_TYPES } from '../../core/theme';
-
-// Redux
 import { getEvents } from './actions';
-import { selectEvents, selectLoading } from './selectors';
+import {selectEvents, selectLoading, selectRefreshing} from './selectors';
 import { logoutRequest } from '../../store/actions/login';
 
 const mapStateToProps = (state) => ({
 	events: selectEvents(state),
 	loading: selectLoading(state),
+  refreshing: selectRefreshing(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	getEvents: () => dispatch(getEvents()),
+	getEvents: (refreshing) => dispatch(getEvents(refreshing)),
 	logout: () => dispatch(logoutRequest()),
 });
 
@@ -44,14 +35,20 @@ class EventsContainer extends Component<PropsType, any> {
 		this.props.navigation.navigate('EventDetail', { id });
 	}
 
+  onRefresh() {
+    this.props.getEvents(true);
+  }
+
 	render() {
-		const { events, loading } = this.props;
-		return loading ? (
+		const { events, loading, refreshing } = this.props;
+    return loading ? (
 			<LoadingIndicator />
 		) : (
 			<SafeAreaView style={styles.container}>
 				<CardList
 					items={events || []}
+          refreshing={refreshing}
+          onRefresh={this.onRefresh.bind(this)}
 					onSelectedOption={this.onSelectedEvent.bind(this)}
 				/>
 				<Footer>

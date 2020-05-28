@@ -1,4 +1,3 @@
-// Dependencies
 import jwtDecode from 'jwt-decode';
 
 import { JwtDecodeResponse } from './jwt-interface';

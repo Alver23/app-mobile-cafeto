@@ -1,5 +1,5 @@
 export {
-	getAuthenticationToken,
-	getAuthenticationError,
-	getAuthenticationLoading,
+	selectAuthenticationToken,
+	selectAuthenticationLoading,
+	selectAuthenticationError,
 } from './authentication-token';

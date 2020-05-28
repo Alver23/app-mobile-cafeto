@@ -1,28 +1,34 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
-const AUTHENTICATION_STORAGE_KEY = 'Cafeto:Authentication';
-const REFRESH_TOKEN_STORAGE_KEY = 'Cafeto:refreshToken';
+export class AuthenticationService {
+	private readonly TOKEN_STORAGE_KEY = 'Cafeto:token';
+	private readonly REFRESH_TOKEN_STORAGE_KEY = 'Cafeto:refreshToken';
 
-export const getAuthenticationToken = async () => {
-	return AsyncStorage.getItem(AUTHENTICATION_STORAGE_KEY);
-};
+	constructor(private readonly asyncStorageSrvice) {}
 
-export const setAuthenticationToken = async (token: string) => {
-	return AsyncStorage.setItem(AUTHENTICATION_STORAGE_KEY, token);
-};
+	getToken(): Promise<any> {
+		return this.asyncStorageSrvice.getItem(this.TOKEN_STORAGE_KEY);
+	}
 
-export const clearAuthenticationToken = async () => {
-	return AsyncStorage.removeItem(AUTHENTICATION_STORAGE_KEY);
-};
+	setToken(token): Promise<any> {
+		return this.asyncStorageSrvice.setItem(this.TOKEN_STORAGE_KEY, token);
+	}
 
-export const getRefreshToken = async () => {
-	return AsyncStorage.getItem(REFRESH_TOKEN_STORAGE_KEY);
-};
+	clearToken(): Promise<any> {
+		return this.asyncStorageSrvice.removeItem(this.TOKEN_STORAGE_KEY);
+	}
 
-export const setRefreshToken = async (token: string) => {
-	return AsyncStorage.setItem(REFRESH_TOKEN_STORAGE_KEY, token);
-};
+	getRefreshToken(): Promise<any> {
+		return this.asyncStorageSrvice.getItem(this.REFRESH_TOKEN_STORAGE_KEY);
+	}
 
-export const clearRefreshToken = async () => {
-	return AsyncStorage.removeItem(REFRESH_TOKEN_STORAGE_KEY);
-};
+	setRefreshToken(token): Promise<any> {
+		return this.asyncStorageSrvice.setItem(this.REFRESH_TOKEN_STORAGE_KEY, token);
+	}
+
+	clearRefreshToken(): Promise<any> {
+		return this.asyncStorageSrvice.removeItem(this.REFRESH_TOKEN_STORAGE_KEY);
+	}
+}
+
+export const authenticationService = new AuthenticationService(AsyncStorage);

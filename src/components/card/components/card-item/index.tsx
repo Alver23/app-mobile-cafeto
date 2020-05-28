@@ -1,17 +1,10 @@
-// Dependencies
 import React, { FC } from 'react';
 import { View, Text } from 'react-native';
-
-// Components
 import Button from './../../../button';
 import Card from '../../card-container';
 import CardFooter from './../card-footer';
 import CardHeader from './../card-body';
-
-// Models
 import { CardItem } from '../../card-interface';
-
-// Styles
 import styles from './../../styles';
 import {
 	BUTTON_SIZE_TYPES,

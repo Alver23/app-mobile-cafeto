@@ -1,7 +1,4 @@
-// Dependencies
 import { StyleSheet } from 'react-native';
-
-// Assets
 const icon = require('./../../assets/icons/map-icon.png');
 
 export default StyleSheet.create({
