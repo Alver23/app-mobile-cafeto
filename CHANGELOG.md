@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/Alver23/app-mobile-cafeto/compare/v1.3.0...v1.4.0) (2020-05-29)
+
+
+### Features
+
+* add unit testing ([b1eeeb3](https://github.com/Alver23/app-mobile-cafeto/commit/b1eeeb315ec778c4f2143cc9346886fc04d6b3ed))
+* add validation for status 401 ([ff21062](https://github.com/Alver23/app-mobile-cafeto/commit/ff2106235852b580c277aad230010ceb9da25592))
+
 ## [1.3.0](https://github.com/Alver23/app-mobile-cafeto/compare/v1.2.0...v1.3.0) (2020-05-28)
 
 
