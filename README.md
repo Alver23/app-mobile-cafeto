@@ -22,7 +22,7 @@ $ npm run ios
 $ npm test
 ```
 
-## previsualización
+## Previsualización
 
 ![Login preview](./design/login.png)
 ![Login Auth0 preview](./design/auth0.png)
