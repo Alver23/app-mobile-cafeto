@@ -15,9 +15,6 @@ $ npm install
 ```bash
 # run ios
 $ npm run ios 
-
-# run andriod
-$ npm run android
 ```
 
 ## Ejecutar Test unitarios
@@ -25,6 +22,14 @@ $ npm run android
 $ npm test
 ```
 
+## previsualización
+
+![Login preview](./design/login.png)
+![Login Auth0 preview](./design/auth0.png)
+![Events preview](./design/events.png)
+![Events Detail preview](./design/event-detail.png)
+![Events Edit preview](./design/event-detail.png)
+![New Events preview](./design/new-event.png)
 
 ## Contacto
 - Autor - [Alver Grisales](https://twitter.com/23Alver)
