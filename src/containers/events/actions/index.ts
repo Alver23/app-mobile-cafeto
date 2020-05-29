@@ -1,4 +1,6 @@
 import { eventService } from '../../../services';
+import { authenticationService } from '../../../core';
+import { clearToken } from '../../../store/actions/authentication-token';
 import { EventActionTypes, EVENTS_ACTION_TYPES } from './interfaces';
 
 export const eventLoading = (payload: any): EventActionTypes => ({
@@ -21,8 +23,12 @@ export const getEvents = (refreshing: boolean = false) => (dispatch) => {
 	eventService
 		.getEvents()
 		.then((response) => dispatch(loadEventSuccess(response)))
-		.catch((error) => {
-			dispatch(loadEventFailure(error));
+		.catch(async ({ status, message }) => {
+			if (status === 401) {
+				await authenticationService.clearToken();
+				dispatch(clearToken());
+			}
+			dispatch(loadEventFailure(message));
 			dispatch(eventLoading({ loading: false, isRefreshing: false }));
 		});
 };

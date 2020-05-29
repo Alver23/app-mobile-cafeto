@@ -1,6 +1,6 @@
 export default {
 	api: {
-		basePath: 'http://localhost:3000/cafeto/api',
+		basePath: 'https://api-cafeto.herokuapp.com/cafeto/api',
 		auth: {
 			login: '/auth/login',
 			loginProvider: '/auth/login-provider',
