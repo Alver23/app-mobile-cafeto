@@ -28,7 +28,7 @@ $ npm test
 ![Login Auth0 preview](./design/auth0.png)
 ![Events preview](./design/events.png)
 ![Events Detail preview](./design/event-detail.png)
-![Events Edit preview](./design/event-detail.png)
+![Events Edit preview](./design/event-edit.png)
 ![New Events preview](./design/new-event.png)
 
 ## Contacto
